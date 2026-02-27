@@ -302,10 +302,10 @@ export default function NewPage() {
                                 className="text-base text-stone-400 leading-relaxed"
                                 style={{ fontFamily: "var(--font-dm-sans)" }}
                             >
-                                TNHC meets in a historic building in Accra.
+                                TNHC meets in a historic building in Haatso Atomic, Accra.
                                 <br />
                                 <strong className="text-stone-100 font-semibold">
-                                    634 S Normandie Ave, Accra, Ghana
+                                    Haatso Atomic, Accra, Ghana
                                 </strong>
                             </p>
                         </div>

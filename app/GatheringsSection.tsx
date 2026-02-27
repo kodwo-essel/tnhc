@@ -22,8 +22,7 @@ export default function GatheringsSection() {
   }, []);
 
   const fadeUp = (delay: string) =>
-    `transition-all duration-700 ease-out ${delay} ${
-      visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+    `transition-all duration-700 ease-out ${delay} ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
     }`;
 
   return (
@@ -32,9 +31,8 @@ export default function GatheringsSection() {
       className="w-full min-h-screen bg-stone-100 flex items-center justify-center md:py-20 "
     >
       <div
-        className={`bg-black md:rounded-3xl max-w-7xl w-full px-8 sm:px-14 py-14 transition-all duration-700 ease-out ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-        }`}
+        className={`bg-black md:rounded-3xl max-w-7xl w-full px-8 sm:px-14 py-14 transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
       >
 
         {/* Tag */}
@@ -43,7 +41,7 @@ export default function GatheringsSection() {
             Gatherings
           </span>
         </div>
-        
+
 
         {/* Heading */}
         <h2
@@ -61,12 +59,10 @@ export default function GatheringsSection() {
           <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-1">
             Service Times
           </p>
-          <p className="text-base text-stone-400 leading-relaxed">
-            Our Sunday services are at{" "}
-            <strong className="text-stone-100 font-semibold">
-              8:45am, 10:30am, &amp; 12:15pm
-            </strong>
-          </p>
+          <div className="text-base text-stone-400 leading-relaxed font-medium" style={{ fontFamily: "var(--font-dm-sans)" }}>
+            <p>Our Sunday service is <strong className="text-stone-100 font-bold">10:00am</strong></p>
+            <p>Friday Travail : <strong className="text-stone-100 font-bold">6:00pm</strong></p>
+          </div>
         </div>
 
         <hr className="my-7 border-stone-200" />
@@ -76,27 +72,19 @@ export default function GatheringsSection() {
           <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-1">
             Location
           </p>
-          <p className="text-base text-stone-400 leading-relaxed">
-            TNHC meets in a historic building in Koreatown.
-            <br />
-            <strong className="text-stone-100 font-semibold">
-              634 S Normandie Ave, Accra Ghana, GA
-            </strong>
+          <p className="text-base text-stone-400 leading-relaxed font-medium" style={{ fontFamily: "var(--font-dm-sans)" }}>
+            The New house Church Haatso Atomic
           </p>
         </div>
-
-
-        
 
         {/* CTA */}
         <div className={`mt-10 text-center ${fadeUp("delay-500")}`}>
           <Link
-              href="/podcast"
-            //   style={{ backgroundColor: "var(--font-accent-color)" }}
-              className="bg-white px-6 py-3 rounded-lg text-black font-semibold hover:opacity-90 transition"
-            >
-              JOIN US FOR SERVICE
-            </Link>
+            href="/new"
+            className="bg-white px-10 py-4 rounded-full text-black font-black text-xs tracking-[0.2em] uppercase hover:scale-105 transition-transform duration-300"
+          >
+            Plan your visit
+          </Link>
         </div>
       </div>
     </section>

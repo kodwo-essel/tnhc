@@ -135,18 +135,18 @@ export default function ContactSection() {
 
         {/* Bottom Quote / Link */}
         <div className="mt-32 text-center">
-          <p className="text-stone-500 text-lg sm:text-xl font-dm-sans mb-10 max-w-2xl mx-auto leading-relaxed">
-            We believe in community beyond the Sunday gathering.
-            <br className="hidden sm:block" />
-            Find us where you are.
+          <p className="text-stone-300 text-lg sm:text-2xl italic font-medium mb-10 max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
+            &ldquo;A reminder that God&rsquo;s house is filled with joy, not just reverence.&rdquo;
           </p>
-          <Link
-            href="/contact-us"
-            className={`inline-block border-2 border-stone-800 text-stone-400 hover:text-white hover:border-white text-xs font-bold tracking-widest uppercase px-10 py-4 rounded-full transition-all duration-300 ${visible ? "opacity-100" : "opacity-0"
+          <a
+            href="https://www.instagram.com/thenewhousechurch"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-block border-2 border-stone-800 text-stone-400 hover:text-white hover:border-white text-xs font-black tracking-[0.2em] uppercase px-12 py-5 rounded-full transition-all duration-300 ${visible ? "opacity-100" : "opacity-0"
               }`}
           >
-            Reach out to us →
-          </Link>
+            Not convinced? The feed says it all. →
+          </a>
         </div>
       </div>
     </section>

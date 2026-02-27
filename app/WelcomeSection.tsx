@@ -15,11 +15,11 @@ const WelcomeSection: React.FC = () => {
                 <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-8 py-16 md:px-6 items-stretch justify-center">
                     {/* Text column */}
                     <div className="flex-[1.5] flex flex-col justify-start items-start gap-8">
-                        <h1 className="text-black text-4xl sm:text-5xl font-bold tracking-tight">WELCOME TO TNHC</h1>
-                        <p style={{ fontFamily: "var(--font-dm-sans)" }} className="text-stone-800 text-xl sm:text-2xl leading-relaxed text-center sm:text-left">
-                            We are a diverse, multi-generational, and energetic church that gathers in Accra, Ghana.
-                            We believe God loves Ghana, and we will keep doing all that we can to reach our city -
-                            <strong className="block sm:inline ml-1 text-black font-extrabold uppercase tracking-wide">until all of Accra is saved</strong>.
+                        <h1 className="text-black text-4xl sm:text-5xl font-black tracking-tighter uppercase">WELCOME TO TNHC</h1>
+                        <p style={{ fontFamily: "var(--font-dm-sans)" }} className="text-stone-800 text-xl sm:text-2xl leading-relaxed text-left font-medium">
+                            The New House Church is a Church that loves Jesus and is dedicated to soul winning and leading believers into maturity
+                            as &ldquo;sons&rdquo; of God. We believe that every believer filled with the Holy Spirit has within them the
+                            power to manifest the nature of Christ.
                         </p>
 
                         <Link

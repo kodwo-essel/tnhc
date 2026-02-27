@@ -162,7 +162,7 @@ export default function AboutHistoryPage() {
                                 thread woven into the story of what God has built here.
                             </p>
                             <p>
-                                Our mission statement, <span className="text-black font-black uppercase tracking-tight italic">&quot;Until All of Accra is Saved&quot;</span>,
+                                Our mission statement, <span className="text-black font-black uppercase tracking-tight italic">&quot;Until All are Saved&quot;</span>,
                                 is more than a slogan—it&apos;s our compass. It reflects our radical
                                 commitment to this city and the people who call it home.
                             </p>
@@ -206,7 +206,7 @@ export default function AboutHistoryPage() {
                             </h2>
                             <div className="space-y-6 text-stone-400 text-lg" style={{ fontFamily: "var(--font-dm-sans)" }}>
                                 <p>
-                                    Founders Kodwo & Akua Essel started with a vision to see Accra encounter the
+                                    Founders Pastor David & Akua King started with a vision to see Accra encounter the
                                     transformative love of God. Starting as a small gathering of passionate
                                     believers, they dreamed of a church that would feel like home—full of
                                     grace, faith, and generosity.

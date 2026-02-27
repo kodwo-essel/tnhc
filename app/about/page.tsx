@@ -112,7 +112,7 @@ export default function AboutPage() {
                         >
                             We gather in Accra, Ghana, with a passion for our city that never ends.
                             We believe God loves Ghana, and we will keep doing all that we can to share
-                            His love — until all of Accra is saved.
+                            His love — until all men are saved.
                         </p>
                     </div>
                 </div>
@@ -152,42 +152,84 @@ export default function AboutPage() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             {
-                                title: "BUILD THE HOUSE",
-                                body: "We are committed to building a healthy, thriving local church — one where people encounter God and grow together in community.",
+                                title: "1. The Word",
+                                body: "We honor and uphold the authority and integrity of Scripture as the ultimate standard for faith and life. The Word of God is living, powerful, and relevant.",
+                                quote: "“All Scripture is inspired by God and is useful to teach us what is true.” – 2 Timothy 3:16",
                                 icon: (
                                     <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-current" strokeWidth="1.5">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25" />
                                     </svg>
                                 )
                             },
                             {
-                                title: "CARRY THE VISION",
-                                body: "Every member carries the vision of the house. We're not passengers — we're participants in reaching our city with the gospel.",
+                                title: "2. Agape Love",
+                                body: "We believe in demonstrating unconditional love, a love that mirrors God’s heart for humanity. We strive to create an environment where everyone feels accepted.",
+                                quote: "“Let all that you do be done in love.” – 1 Corinthians 16:14",
                                 icon: (
                                     <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-current" strokeWidth="1.5">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-1.333-2.6 3.75 3.75 0 002.763 6.52z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                                     </svg>
                                 )
                             },
                             {
-                                title: "MAKE DISCIPLES",
-                                body: "Our mission doesn't end at salvation. We're called to walk alongside people and help them grow into mature followers of Jesus.",
+                                title: "3. Fellowship",
+                                body: "We value community and connection among believers. Church is not just a place to attend but a family to belong to.",
+                                quote: "“They devoted themselves to the apostles’ teaching and to fellowship...” – Acts 2:42",
+                                icon: (
+                                    <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-current" strokeWidth="1.5">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.998 5.998 0 00-4.032-5.658m4.032 5.658a18.835 18.835 0 00-12 0m12 0a5.998 5.998 0 00-4.032-5.658m0 0a5.998 5.998 0 00-4.032 5.658m0 0a5.998 5.998 0 014.032-5.658m0 0a5.998 5.998 0 014.032 5.658M9 10.5a3 3 0 116 0 3 3 0 01-6 0z" />
+                                    </svg>
+                                )
+                            },
+                            {
+                                title: "4. Prayer",
+                                body: "Prayer is the lifeline of our faith and the heartbeat of our relationship with God. We are devoted to building a strong prayer culture.",
+                                quote: "“Pray without ceasing.” – 1 Thessalonians 5:17",
+                                icon: (
+                                    <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-current" strokeWidth="1.5">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21V3m0 18l-3-3m3 3l3-3M12 3L9 6m3-3l3 3" />
+                                    </svg>
+                                )
+                            },
+                            {
+                                title: "5. Worship",
+                                body: "We were created to worship, and we do so with all our heart, soul, and strength. Worship is a lifestyle that glorifies God in all we do.",
+                                quote: "“Worship the Lord your God, and serve Him only.” – Matthew 4:10",
+                                icon: (
+                                    <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-current" strokeWidth="1.5">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-3.605 0l-1.32-.377A2.25 2.25 0 019.75 14.89V8.574m0 0a2.25 2.25 0 011.632-2.163l1.32-.377a1.803 1.803 0 113.605 0l1.32.377a2.25 2.25 0 011.632 2.163" />
+                                    </svg>
+                                )
+                            },
+                            {
+                                title: "6. Service",
+                                body: "As followers of Christ, we are called to serve others with humility and love. We seek to be the hands and feet of Jesus.",
+                                quote: "“For the love of Christ compels us...” – 2 Corinthians 5:14-15",
                                 icon: (
                                     <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-current" strokeWidth="1.5">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 006.16 11.79a14.98 14.98 0 01-6.16 12.12 14.98 14.98 0 016.16-11.79" />
                                     </svg>
                                 )
                             },
+                            {
+                                title: "7. Excellence",
+                                body: "We pursue excellence in all we do because we serve an excellent God. It’s giving our best with integrity, diligence, and passion.",
+                                quote: "“Work willingly at whatever you do...” – Colossians 3:23",
+                                icon: (
+                                    <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-current" strokeWidth="1.5">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                                    </svg>
+                                )
+                            },
                         ].map((item, i) => (
                             <div
                                 key={item.title}
-                                className={`group bg-white/[0.02] border border-white/5 p-10 rounded-[2.5rem] transition-all duration-500 hover:bg-white/[0.05] hover:-translate-y-2 ${valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                                className={`group bg-white/[0.02] border border-white/5 p-10 rounded-[2.5rem] transition-all duration-500 hover:bg-white/[0.05] hover:-translate-y-2 flex flex-col items-start ${valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                                     }`}
-                                style={{ transitionDelay: `${i * 150}ms` }}
+                                style={{ transitionDelay: `${i * 100}ms` }}
                             >
                                 <div className="w-12 h-12 flex items-center justify-center text-white/40 mb-8 group-hover:text-[var(--font-accent-color)] transition-colors duration-500">
                                     {item.icon}
@@ -196,10 +238,13 @@ export default function AboutPage() {
                                     {item.title}
                                 </h3>
                                 <p
-                                    className="text-stone-400 text-base leading-relaxed font-medium"
+                                    className="text-stone-400 text-base leading-relaxed font-medium mb-6"
                                     style={{ fontFamily: "var(--font-dm-sans)" }}
                                 >
                                     {item.body}
+                                </p>
+                                <p className="text-[var(--font-accent-color)] text-xs font-black tracking-widest uppercase mt-auto border-l border-[var(--font-accent-color)]/30 pl-4 py-1">
+                                    {item.quote}
                                 </p>
                             </div>
                         ))}
@@ -231,7 +276,7 @@ export default function AboutPage() {
                             "We are your burning ones. We are the righteousness of God.",
                             "You're not done with Accra — So neither are we.",
                             "Our vision is clear and God is with us.",
-                            "Until all of Accra is saved.",
+                            "Until all men are saved.",
                         ].map((line, i) => (
                             <p
                                 key={i}
