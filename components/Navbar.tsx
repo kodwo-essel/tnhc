@@ -1,15 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 const menuItems = [
     { label: "I'M NEW", href: "/new" },
     { label: "ABOUT", href: "/about" },
-    { label: "WATCH", href: "https://www.youtube.com/tnhc", external: true },
+    { label: "WATCH", href: "/watch", external: false },
     { label: "START HERE", href: "/starthere" },
-    { label: "LEGACY GIVING", href: "/legacy" },
     { label: "BAPTISM", href: "/baptism" },
     { label: "KIDS", href: "/kids" },
     { label: "YOUTH", href: "/youth" },
@@ -17,19 +16,34 @@ const menuItems = [
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [mobileFolder, setMobileFolder] = useState<"root" | "menu">("root");
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
+    // Prevent scrolling when mobile menu is open
+    useEffect(() => {
+        if (mobileMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+            setMobileFolder("root"); // Reset folder when closing
+        }
+    }, [mobileMenuOpen]);
+
+    const closeMobileMenu = () => {
+        setMobileMenuOpen(false);
+    };
+
     return (
-        <header className="w-full bg-black border-b border-black sticky top-0 z-50">
-            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+        <header className="w-full bg-black border-b border-black sticky top-0 z-[100]">
+            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 relative z-[110]">
                 {/* Logo */}
-                <Link href="/" className="flex-shrink-0">
+                <Link href="/" onClick={closeMobileMenu} className="flex-shrink-0">
                     <Image
                         src="/logo/logo-transparent.png"
                         alt="TNHC"
                         width={100}
                         height={32}
-                        style={{ objectFit: "contain", height: 32, width: "auto" }}
+                        className="h-8 w-auto object-contain"
                         priority
                     />
                 </Link>
@@ -57,28 +71,30 @@ export default function Navbar() {
                         </button>
 
                         {dropdownOpen && (
-                            <div className="absolute top-full right-[-20px] mt-1 w-50 bg-black text-white text-right font-termina font-bold p-2 z-50">
-                                {menuItems.map((item) =>
-                                    item.external ? (
-                                        <a
-                                            key={item.label}
-                                            href={item.href}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="block text-sm transition-colors"
-                                        >
-                                            {item.label}
-                                        </a>
-                                    ) : (
-                                        <Link
-                                            key={item.label}
-                                            href={item.href}
-                                            className="block text-sm transition-colors"
-                                        >
-                                            {item.label}
-                                        </Link>
-                                    )
-                                )}
+                            <div className="absolute top-full right-[-20px] pt-2 w-56 z-50">
+                                <div className="bg-black text-white text-right font-termina font-bold p-4 shadow-2xl border border-white/5">
+                                    {menuItems.map((item) =>
+                                        item.external ? (
+                                            <a
+                                                key={item.label}
+                                                href={item.href}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="block text-sm py-2 transition-colors hover:text-[var(--font-accent-color)]"
+                                            >
+                                                {item.label}
+                                            </a>
+                                        ) : (
+                                            <Link
+                                                key={item.label}
+                                                href={item.href}
+                                                className="block text-sm py-2 transition-colors hover:text-[var(--font-accent-color)]"
+                                            >
+                                                {item.label}
+                                            </Link>
+                                        )
+                                    )}
+                                </div>
                             </div>
                         )}
                     </div>
@@ -87,94 +103,122 @@ export default function Navbar() {
                     <Link
                         href="/give"
                         style={{ backgroundColor: "var(--font-accent-color)" }}
-                        className="text-black text-md font-semibold px-5 py-2 rounded-lg hover:bg-blue-500 transition-colors"
+                        className="text-black text-md font-semibold px-5 py-2 rounded-lg hover:bg-[var(--font-accent-color)] transition-colors"
                     >
                         GIVE
                     </Link>
                 </nav>
 
                 {/* Mobile: GIVE + Burger */}
-                <div className="flex md:hidden items-center gap-3">
+                <div className="flex md:hidden items-center gap-4">
                     <Link
                         href="/give"
+                        onClick={closeMobileMenu}
                         style={{ backgroundColor: "var(--font-accent-color)" }}
-                        className="text-black text-xs font-semibold px-4 py-1.5 rounded hover:bg-blue-600 transition-colors"
+                        className="text-black text-xs font-bold px-4 py-1.5 rounded transition-colors"
                     >
                         GIVE
                     </Link>
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="flex flex-col justify-center items-center w-8 h-8 gap-1.5"
+                        className="relative w-8 h-8 flex flex-col justify-center items-center gap-1.5"
                         aria-label={mobileMenuOpen ? "Close Menu" : "Open Menu"}
                     >
+                        {/* Burger lines */}
                         <span
-                            className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}
+                            className={`block w-6 h-[2px] bg-white transition-all duration-300 ${mobileMenuOpen ? "rotate-45 translate-y-[8px]" : ""}`}
                         />
                         <span
-                            className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`}
+                            className={`block w-6 h-[2px] bg-white transition-all duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`}
                         />
                         <span
-                            className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+                            className={`block w-6 h-[2px] bg-white transition-all duration-300 ${mobileMenuOpen ? "-rotate-45 -translate-y-[8px]" : ""}`}
                         />
                     </button>
                 </div>
             </div>
 
-            {/* Mobile Menu */}
-            {mobileMenuOpen && (
-                <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-1">
-                    <Link
-                        href="/conf"
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="py-2 text-sm font-medium text-gray-700 hover:text-blue-600 border-b border-gray-100"
-                    >
-                        TNHC Conference 2026
-                    </Link>
+            {/* Full-screen Mobile Overlay */}
+            <div
+                className={`fixed inset-0 bg-black transition-transform duration-300 ease-in-out z-[100] transform ${mobileMenuOpen ? "translate-y-0" : "-translate-y-full"
+                    }`}
+                style={{ paddingTop: "64px" }} // Height of the nav bar
+            >
+                <div className="w-full h-full overflow-y-auto px-8 py-10 flex flex-col items-center">
 
-                    {/* Mobile MENU label */}
-                    <button
-                        onClick={() => setDropdownOpen(!dropdownOpen)}
-                        className="flex items-center justify-between py-2 text-sm font-medium text-gray-700 border-b border-gray-100 uppercase"
-                    >
-                        MENU
-                        <svg
-                            className={`w-4 h-4 transition-transform ${dropdownOpen ? "rotate-180" : ""}`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
+                    {/* Root Folder View */}
+                    <div className={`w-full transition-all duration-300 ${mobileFolder === "root" ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-full absolute pointer-events-none"}`}>
+                        <div className="flex flex-col gap-8 text-center">
+                            <Link
+                                href="/conf"
+                                onClick={closeMobileMenu}
+                                className="text-2xl font-bold text-white uppercase tracking-wider"
+                            >
+                                TNHC Conference 2026
+                            </Link>
 
-                    {dropdownOpen && (
-                        <div className="pl-4 flex flex-col gap-1">
-                            {menuItems.map((item) =>
-                                item.external ? (
-                                    <a
-                                        key={item.label}
-                                        href={item.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="py-2 text-sm text-gray-600 hover:text-blue-600 border-b border-gray-50"
-                                    >
-                                        {item.label}
-                                    </a>
-                                ) : (
-                                    <Link
-                                        key={item.label}
-                                        href={item.href}
-                                        onClick={() => setMobileMenuOpen(false)}
-                                        className="py-2 text-sm text-gray-600 hover:text-blue-600 border-b border-gray-50"
-                                    >
-                                        {item.label}
-                                    </Link>
-                                )
-                            )}
+                            <button
+                                onClick={() => setMobileFolder("menu")}
+                                className="text-2xl font-bold text-white uppercase tracking-wider flex items-center justify-center gap-2"
+                            >
+                                MENU
+                                <svg viewBox="0 0 22 22" className="w-6 h-6 stroke-white fill-none" strokeWidth="2">
+                                    <path d="M7 18l7-7-7-7" />
+                                </svg>
+                            </button>
+
+                            <Link
+                                href="/give"
+                                onClick={closeMobileMenu}
+                                className="text-2xl font-bold text-black uppercase tracking-wider py-4 rounded-xl inline-block w-full"
+                                style={{ backgroundColor: "var(--font-accent-color)" }}
+                            >
+                                GIVE
+                            </Link>
                         </div>
-                    )}
+                    </div>
+
+                    {/* MENU Folder View */}
+                    <div className={`w-full transition-all duration-300 ${mobileFolder === "menu" ? "opacity-100 translate-x-0" : "opacity-100 translate-x-full absolute pointer-events-none"}`}>
+                        <div className="flex flex-col gap-6 w-full max-w-sm mx-auto">
+                            <button
+                                onClick={() => setMobileFolder("root")}
+                                className="flex items-center gap-2 text-stone-400 uppercase text-xs font-bold tracking-widest mb-4 transition-colors hover:text-white"
+                            >
+                                <svg viewBox="0 0 22 22" className="w-4 h-4 stroke-current fill-none" strokeWidth="2">
+                                    <path d="M15 18l-7-7 7-7" />
+                                </svg>
+                                Back
+                            </button>
+
+                            <div className="flex flex-col gap-4 text-center">
+                                {menuItems.map((item) => (
+                                    item.external ? (
+                                        <a
+                                            key={item.label}
+                                            href={item.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-xl font-bold text-white uppercase tracking-widest py-2 border-b border-white/10"
+                                        >
+                                            {item.label}
+                                        </a>
+                                    ) : (
+                                        <Link
+                                            key={item.label}
+                                            href={item.href}
+                                            onClick={closeMobileMenu}
+                                            className="text-xl font-bold text-white uppercase tracking-widest py-2 border-b border-white/10"
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    )
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            )}
+            </div>
         </header>
     );
 }

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const PodcastSection = () => {
   return (
-    <section className="w-full bg-stone-100 py-20">
+    <section className="w-full bg-stone-100 pt-20 sm:py-20">
       <div className="max-w-6xl mx-auto overflow-hidden flex flex-col">
         <h1 className="text-black text-4xl font-bold text-left my-4">
           LATEST PODCAST
@@ -47,14 +47,14 @@ const PodcastSection = () => {
           </div>
 
           {/* BOTTOM PART */}
-          <div className="border-t border-gray-200 px-8 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="border-t border-gray-200 px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
             
             {/* Guests */}
-            <div>
-              <p className="text-sm text-gray-200 uppercase tracking-wide">
+            <div className="flex flex-col gap-1 justify-center items-center">
+              <p className="text-center text-sm text-gray-200 uppercase tracking-wide">
                 Guests
               </p>
-              <p className="text-lg font-semibold text-white">
+              <p className="text-center text-lg font-semibold text-white">
                 John Doe, Sarah Kim
               </p>
             </div>

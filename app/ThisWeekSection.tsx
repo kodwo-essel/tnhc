@@ -36,7 +36,7 @@ const ThisWeekBanner: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[350px] md:h-[400px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
