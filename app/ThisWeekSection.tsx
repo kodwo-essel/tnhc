@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-const ThisWeekBanner: React.FC = () => {
-  const eventDate = new Date("2026-02-28T10:00:00"); // set your event date/time
+const EVENT_DATE = new Date("2026-02-28T10:00:00"); // set your event date/time
 
+const ThisWeekBanner: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -16,7 +16,7 @@ const ThisWeekBanner: React.FC = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-      const diff = eventDate.getTime() - now.getTime();
+      const diff = EVENT_DATE.getTime() - now.getTime();
 
       if (diff <= 0) {
         clearInterval(timer);
@@ -47,7 +47,7 @@ const ThisWeekBanner: React.FC = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center text-white px-4 md:px-0 gap-4">
-        <p style={{fontFamily: "var(--font-dm-sans)"}} className="uppercase text-sm md:text-base tracking-wider text-gray-200">
+        <p style={{ fontFamily: "var(--font-dm-sans)" }} className="uppercase text-sm md:text-base tracking-wider text-gray-200">
           February 28, 2026 | Koreatown Campus
         </p>
         <h2 className="text-3xl md:text-5xl font-bold">Sunday Gathering</h2>
@@ -75,7 +75,7 @@ const ThisWeekBanner: React.FC = () => {
         {/* RSVP Button */}
         <Link
           href="/rsvp"
-          style={{backgroundColor: "var(--font-accent-color)"}}
+          style={{ backgroundColor: "var(--font-accent-color)" }}
           className="mt-6 px-6 py-3 rounded-lg font-semibold text-black transition-colors"
         >
           RSVP Now
