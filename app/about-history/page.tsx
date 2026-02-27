@@ -46,7 +46,7 @@ function PhotoReel({ photos }: { photos: { src: string; alt: string }[] }) {
             <div
                 ref={trackRef}
                 className="flex gap-8"
-                style={{ transform: `translateX(-${offset}px)`, 庆: "transform" }}
+                style={{ transform: `translateX(-${offset}px)`, willChange: "transform" }}
             >
                 {doubled.map((p, i) => (
                     <div
