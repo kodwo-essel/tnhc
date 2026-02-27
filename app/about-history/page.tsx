@@ -206,7 +206,7 @@ export default function AboutHistoryPage() {
                             </h2>
                             <div className="space-y-6 text-stone-400 text-lg" style={{ fontFamily: "var(--font-dm-sans)" }}>
                                 <p>
-                                    Founders Pastor David & Akua King started with a vision to see Accra encounter the
+                                    Founders Pastor David & Vanessa King started with a vision to see Accra encounter the
                                     transformative love of God. Starting as a small gathering of passionate
                                     believers, they dreamed of a church that would feel like home—full of
                                     grace, faith, and generosity.

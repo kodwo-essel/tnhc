@@ -120,7 +120,7 @@ export default function ConferencePage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
                         <SpeakerCard name="Pastor David R. King" role="Host & Senior Pastor" image="/logo/photo_2026-02-26_09-44-11.jpg" delay="delay-0" />
-                        <SpeakerCard name="Pastor Akua King" role="Host & Lead Pastor" image="/logo/photo_2026-02-26_09-44-11 (Copy).jpg" delay="delay-200" />
+                        <SpeakerCard name="Pastor Vanessa King" role="Host & Lead Pastor" image="/logo/photo_2026-02-26_09-44-11 (Copy).jpg" delay="delay-200" />
                         <SpeakerCard name="Guest Speaker" role="Visionary Leader" image="/speaker.jpg" delay="delay-400" />
                     </div>
                 </div>

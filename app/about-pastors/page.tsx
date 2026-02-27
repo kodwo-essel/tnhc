@@ -83,8 +83,8 @@ export default function AboutPastorsPage() {
                         >
                             <div className="aspect-[4/5] relative rounded-[2.5rem] overflow-hidden shadow-2xl z-10">
                                 <Image
-                                    src="/logo/photo_2026-02-26_09-44-11.jpg"
-                                    alt="Pastor David & Akua King"
+                                    src="/pastorandwife.jpg"
+                                    alt="Pastor David & Vanessa King"
                                     fill
                                     className="object-cover"
                                 />
@@ -102,7 +102,7 @@ export default function AboutPastorsPage() {
                             <div>
                                 <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-4 block underline decoration-[var(--font-accent-color)] decoration-4 underline-offset-8">Lead Pastors</span>
                                 <h2 className="text-white text-4xl sm:text-6xl font-black leading-[0.9] tracking-tighter uppercase">
-                                    DAVID R. &<br />AKUA KING
+                                    DAVID R. &<br />VANESSA KING
                                 </h2>
                             </div>
 
@@ -111,7 +111,7 @@ export default function AboutPastorsPage() {
                                     className="text-white text-xl sm:text-2xl leading-relaxed italic font-medium opacity-90"
                                     style={{ fontFamily: "var(--font-dm-sans)" }}
                                 >
-                                    David and Akua are passionate about reaching the city of Accra, and for our
+                                    David and Vanessa are passionate about reaching the city of Accra, and for our
                                     church to be a true family.
                                 </p>
                                 <p
@@ -119,7 +119,7 @@ export default function AboutPastorsPage() {
                                     style={{ fontFamily: "var(--font-dm-sans)" }}
                                 >
                                     David is a passionate teacher of God&apos;s Word who believes deeply in the
-                                    power of the local church to transform communities. Akua brings warmth,
+                                    power of the local church to transform communities. Vanessa brings warmth,
                                     creativity, and a fierce love for people to everything she does.
                                     Together they lead The New House Church with vision, faith, and a whole lot of joy.
                                 </p>
@@ -150,7 +150,7 @@ export default function AboutPastorsPage() {
                                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.848 0-3.204.012-3.584.07-4.849.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                                         </svg>
                                     </span>
-                                    <span className="text-xs font-black tracking-widest uppercase">@AKUAKING</span>
+                                    <span className="text-xs font-black tracking-widest uppercase">@VANESSAKING</span>
                                 </a>
                             </div>
                         </div>

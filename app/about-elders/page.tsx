@@ -129,7 +129,7 @@ export default function AboutEldersPage() {
                             style={{ fontFamily: "var(--font-dm-sans)" }}
                         >
                             The Elder Board at The New House Church serves in support of Lead Pastors
-                            David & Akua King, providing spiritual guidance and organizational wisdom.
+                            David & Vanessa King, providing spiritual guidance and organizational wisdom.
                         </p>
                         <p
                             className="text-stone-600 text-lg leading-relaxed max-w-2xl mx-auto"
