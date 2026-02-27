@@ -57,8 +57,8 @@ export default function AboutPastorsPage() {
                                 key={item.label}
                                 href={item.href}
                                 className={`text-[10px] sm:text-xs font-black tracking-[0.25em] uppercase transition-all duration-300 ${item.label === "PASTORS"
-                                        ? "text-white border-b-2 border-white pb-1"
-                                        : "text-stone-500 hover:text-white"
+                                    ? "text-white border-b-2 border-white pb-1"
+                                    : "text-stone-500 hover:text-white"
                                     }`}
                             >
                                 {item.label}

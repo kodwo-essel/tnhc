@@ -25,7 +25,10 @@ export default function Navbar() {
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "unset";
-            setMobileFolder("root"); // Reset folder when closing
+            const handle = requestAnimationFrame(() => {
+                setMobileFolder("root"); // Reset folder when closing
+            });
+            return () => cancelAnimationFrame(handle);
         }
     }, [mobileMenuOpen]);
 

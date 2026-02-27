@@ -236,8 +236,8 @@ export default function AboutPage() {
                             <p
                                 key={i}
                                 className={`text-center transition-all duration-700 ${i === 7
-                                        ? "text-white font-black uppercase tracking-tighter text-3xl sm:text-5xl lg:text-7xl mt-12"
-                                        : "text-stone-300 text-lg sm:text-2xl italic font-medium opacity-70"
+                                    ? "text-white font-black uppercase tracking-tighter text-3xl sm:text-5xl lg:text-7xl mt-12"
+                                    : "text-stone-300 text-lg sm:text-2xl italic font-medium opacity-70"
                                     }`}
                                 style={i !== 7 ? { fontFamily: "var(--font-dm-sans)" } : {}}
                             >

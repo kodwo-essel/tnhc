@@ -89,7 +89,10 @@ export default function GivePage() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
+        const handle = requestAnimationFrame(() => {
+            setMounted(true);
+        });
+        return () => cancelAnimationFrame(handle);
     }, []);
 
     return (
