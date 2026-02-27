@@ -56,7 +56,6 @@ const ELDERS: Elder[] = [
 ];
 
 export default function AboutEldersPage() {
-    const { ref: boardRef, visible: boardVisible } = useFadeUp(0.05);
     const { ref: introRef, visible: introVisible } = useFadeUp();
     const { ref: gridRef, visible: gridVisible } = useFadeUp();
 
