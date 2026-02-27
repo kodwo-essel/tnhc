@@ -81,8 +81,8 @@ export default function BaptismPage() {
                         >
                             <div className="w-full aspect-[3/4] relative rounded-2xl overflow-hidden shadow-md bg-stone-100">
                                 <Image
-                                    src="/speaker.jpg"
-                                    alt="Baptism moment"
+                                    src="/pastorandwife.jpg"
+                                    alt="Pastor and wife"
                                     fill
                                     className="object-cover"
                                 />
@@ -131,7 +131,7 @@ export default function BaptismPage() {
 
                             {/* CTA */}
                             <a
-                                href="https://tnhc.ccbchurch.com/goto/forms/419/responses/new"
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSflDsnRQbNMZgICF01J9s2uiaJGpMcrW_2szFBBUvAfWN6hSg/viewform?usp=header"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="mt-2 inline-block bg-black text-white font-bold text-sm tracking-widest uppercase px-10 py-4 rounded-lg hover:opacity-70 transition"
@@ -157,7 +157,7 @@ export default function BaptismPage() {
                             {/* Landscape */}
                             <div className="w-full aspect-[3/2] relative rounded-2xl overflow-hidden shadow-md bg-stone-100">
                                 <Image
-                                    src="/hero.jpg"
+                                    src="/speaker.jpg"
                                     alt="Baptism Sunday"
                                     fill
                                     className="object-cover"

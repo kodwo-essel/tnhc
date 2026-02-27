@@ -134,7 +134,7 @@ export default function Footer() {
                                                 href={link.href}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="text-stone-400 text-sm font-medium hover:text-white hover:translate-x-2 inline-block transition-all duration-300"
+                                                className="text-stone-400 text-lg font-medium hover:text-white hover:translate-x-2 inline-block transition-all duration-300"
                                                 style={{ fontFamily: "var(--font-dm-sans)" }}
                                             >
                                                 {link.label}
@@ -142,7 +142,7 @@ export default function Footer() {
                                         ) : (
                                             <Link
                                                 href={link.href}
-                                                className="text-stone-400 text-sm font-medium hover:text-white hover:translate-x-2 inline-block transition-all duration-300"
+                                                className="text-stone-400 text-lg font-medium hover:text-white hover:translate-x-2 inline-block transition-all duration-300"
                                                 style={{ fontFamily: "var(--font-dm-sans)" }}
                                             >
                                                 {link.label}

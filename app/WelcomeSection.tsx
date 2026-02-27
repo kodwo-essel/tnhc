@@ -7,7 +7,7 @@ import Image from "next/image";
 const WelcomeSection: React.FC = () => {
     const [showVideo, setShowVideo] = useState(false);
     // Placeholder TNHC Welcome Video ID
-    const videoId = "dQw4w9WgXcQ";
+    const videoId = "cT1nEaWIEiU?si=MQipzY12gP48ocUA";
 
     return (
         <section className="w-full bg-[#F2F0EB] md:rounded-t-[4rem] mt-[-4rem]">
