@@ -80,7 +80,7 @@ export default function BaptismPage() {
                         >
                             <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-md bg-stone-100">
                                 <img
-                                    src="/hero.jpg"
+                                    src="/speaker.jpg"
                                     alt="Baptism moment"
                                     className="w-full h-full object-cover"
                                 />
@@ -146,7 +146,7 @@ export default function BaptismPage() {
                             {/* Tall portrait */}
                             <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-md bg-stone-100">
                                 <img
-                                    src="/this-week.jpg"
+                                    src="/prayer.jpg"
                                     alt="Baptism community"
                                     className="w-full h-full object-cover"
                                 />
@@ -154,7 +154,7 @@ export default function BaptismPage() {
                             {/* Landscape */}
                             <div className="w-full aspect-[3/2] rounded-2xl overflow-hidden shadow-md bg-stone-100">
                                 <img
-                                    src="/hero.jpeg"
+                                    src="/hero.jpg"
                                     alt="Baptism Sunday"
                                     className="w-full h-full object-cover"
                                 />
@@ -166,7 +166,7 @@ export default function BaptismPage() {
                     {/* Mobile: single photo below text */}
                     <div className="lg:hidden mt-10 w-full aspect-video rounded-2xl overflow-hidden shadow-md bg-stone-100">
                         <img
-                            src="/hero.jpg"
+                            src="/speaker.jpg"
                             alt="Baptism at TNHC"
                             className="w-full h-full object-cover"
                         />
