@@ -58,26 +58,32 @@ interface GivingMethod {
 
 const GIVING_METHODS: GivingMethod[] = [
     {
+        icon: <Icons.Text />,
+        title: "MTN Mobile Money",
+        desc: "Number: 0556695437 | Name: The New House Church | Reference: Tithe or Seed",
+        cta: "MoMo Instructions",
+        href: "#ways-to-give",
+    },
+    {
         icon: <Icons.Card />,
-        title: "Give Online",
-        desc: "The easiest way to give — securely online via debit, credit, or bank transfer. Set up a one-time or recurring gift in minutes.",
-        cta: "Give Now",
-        href: "https://pushpay.com/g/thenewhousechurch",
-        external: true,
+        title: "Bank (USD)",
+        desc: "Acc: 01216124103230 | UBA East Legon 2 | Swift: STBGGHAC",
+        cta: "USD Details",
+        href: "#ways-to-give",
+    },
+    {
+        icon: <Icons.Card />,
+        title: "Bank (GHS)",
+        desc: "Acc: 01216124102516 | UBA East Legon 2 | Swift: STBGGHAC",
+        cta: "GHS Details",
+        href: "#ways-to-give",
     },
     {
         icon: <Icons.Mail />,
-        title: "Give by Mail",
-        desc: "Make checks payable to \"The New House Church\" and mail to our church office address below.",
-        cta: "Get Details",
-        href: "/contact-us",
-    },
-    {
-        icon: <Icons.Text />,
-        title: "Give by Text",
-        desc: "Text any amount to our secure short code. You'll be guided through a simple, secure one-time setup process.",
-        cta: "Learn More",
-        href: "/give#text-giving",
+        title: "Zelle",
+        desc: "Thenewhousechurch@gmail.com",
+        cta: "Zelle Email",
+        href: "mailto:Thenewhousechurch@gmail.com",
     },
 ];
 
@@ -124,27 +130,25 @@ export default function GivePage() {
                         Generosity
                     </p>
                     <h1
-                        className="font-black text-white leading-none tracking-tighter"
-                        style={{ fontSize: "clamp(4rem, 12vw, 9rem)" }}
+                        className="font-black text-white leading-[0.9] tracking-tighter"
+                        style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}
                     >
-                        GIVE
+                        Partnering<br />with the Vision
                     </h1>
                     <p
-                        className="text-stone-300 text-lg sm:text-xl max-w-2xl leading-relaxed mx-auto font-medium"
+                        className="text-stone-300 text-lg sm:text-xl max-w-3xl leading-relaxed mx-auto font-medium"
                         style={{ fontFamily: "var(--font-dm-sans)" }}
                     >
-                        Your generosity fuels the mission. We believe every gift reflects
-                        the heart of a giving God and impacts lives in Accra and beyond.
+                        &ldquo;Bring the whole tithe into the storehouse...&rdquo; — Malachi 3:10.
+                        Your generosity fuels the mission of TNHC to reach our community and the world.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                        <a
-                            href="https://pushpay.com/g/thenewhousechurch"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            href="#ways-to-give"
                             className="bg-white text-black font-extrabold text-sm tracking-[0.2em] uppercase px-12 py-5 rounded-full hover:scale-105 transition-transform duration-300 shadow-2xl"
                         >
-                            Give Now
-                        </a>
+                            Ways to Give
+                        </Link>
                         <Link
                             href="#ways-to-give"
                             className="bg-white/10 backdrop-blur-md text-white border border-white/20 font-extrabold text-sm tracking-[0.2em] uppercase px-12 py-5 rounded-full hover:bg-white/20 transition-all duration-300"
@@ -185,7 +189,7 @@ export default function GivePage() {
                             <div className="w-20 h-1 bg-[var(--font-accent-color)] mx-auto" />
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-14">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8">
                             {GIVING_METHODS.map((method, i) => (
                                 <div
                                     key={i}
@@ -197,7 +201,7 @@ export default function GivePage() {
                                     </div>
 
                                     <div className="space-y-3">
-                                        <h3 className="font-black text-white text-2xl tracking-tight uppercase">
+                                        <h3 className="font-black text-white text-lg tracking-tight uppercase">
                                             {method.title}
                                         </h3>
                                         <p
@@ -234,48 +238,60 @@ export default function GivePage() {
                 </div>
             </section>
 
-            {/* ── 4. WHY WE GIVE ──────────────────────────────────────────────── */}
+            {/* ── 4. OUR COMMITMENT ───────────────────────────────────────────── */}
             <section className="w-full bg-[#F2F0EB] py-24 sm:py-32">
-                <div ref={whyRef} className="w-full max-w-4xl mx-auto px-6 text-center">
-                    <span
-                        className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-medium tracking-widest uppercase text-stone-500 mb-8 transition-all duration-700 ${whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                            }`}
-                    >
-                        Our Philosophy
-                    </span>
-                    <h2
-                        className={`text-black text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tighter uppercase mb-10 transition-all duration-700 delay-100 ${whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                    >
-                        Giving is an act<br className="hidden sm:block" /> of worship
-                    </h2>
-                    <div
-                        className={`space-y-8 transition-all duration-700 delay-200 ${whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                    >
-                        <p
-                            className="text-black text-xl sm:text-2xl leading-relaxed italic font-medium"
-                            style={{ fontFamily: "var(--font-dm-sans)" }}
+                <div ref={whyRef} className="w-full max-w-5xl mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <span
+                            className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-medium tracking-widest uppercase text-stone-500 mb-8 transition-all duration-700 ${whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                                }`}
                         >
-                            At The New House Church, we believe that generosity is a spiritual discipline.
-                            When we give, we reflect the heart of a God who gave His Son for us.
-                        </p>
-                        <p
-                            className="text-stone-600 text-lg leading-relaxed max-w-2xl mx-auto"
-                            style={{ fontFamily: "var(--font-dm-sans)" }}
+                            Our Commitment
+                        </span>
+                        <h2
+                            className={`text-black text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tighter uppercase mb-6 transition-all duration-700 delay-100 ${whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                         >
-                            Your gifts fuel everything we do: from local outreach and building community
-                            to investing in the next generation through our Kids and Youth ministries.
-                            We are committed to faithful stewardship of every gift entrusted to us.
-                        </p>
+                            Investing in the Kingdom
+                        </h2>
+                        <div
+                            className={`space-y-6 transition-all duration-700 delay-200 ${whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                        >
+                            <p
+                                className="text-black text-xl sm:text-2xl leading-relaxed italic font-medium max-w-4xl mx-auto"
+                                style={{ fontFamily: "var(--font-dm-sans)" }}
+                            >
+                                At TNHC, every aspect of the ministry is supported by the faithful tithes and offerings of our
+                                members and partners. We believe that tithing is a personal responsibility to God that ensures
+                                the &ldquo;maintenance, operating expenses, and construction&rdquo; of His house are provided for.
+                            </p>
+                            <p
+                                className="text-stone-600 text-lg leading-relaxed max-w-3xl mx-auto"
+                                style={{ fontFamily: "var(--font-dm-sans)" }}
+                            >
+                                When you give, you are directly investing in souls, missions, and the growth of the Kingdom.
+                            </p>
+                        </div>
                     </div>
-                    <div
-                        className={`pt-12 transition-all duration-700 delay-300 ${whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                    >
-                        <Link
-                            href="/about"
-                            className="text-xs font-black tracking-[0.2em] uppercase text-black border-b-2 border-black pb-1 hover:text-[var(--font-accent-color)] hover:border-[var(--font-accent-color)] transition-all"
-                        >
-                            Learn more about our mission
-                        </Link>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                        <div className="bg-white/40 backdrop-blur-sm border border-black/5 p-8 rounded-2xl group hover:bg-white transition-all duration-500">
+                            <h3 className="font-black text-xl mb-4 tracking-tight uppercase">Tithes & Offerings</h3>
+                            <p className="text-stone-600 text-sm leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
+                                Supports daily operations, employee compensation, and utilities.
+                            </p>
+                        </div>
+                        <div className="bg-white/40 backdrop-blur-sm border border-black/5 p-8 rounded-2xl group hover:bg-white transition-all duration-500">
+                            <h3 className="font-black text-xl mb-4 tracking-tight uppercase">Building & Construction</h3>
+                            <p className="text-stone-600 text-sm leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
+                                Dedicated to the physical growth and maintenance of our sanctuary.
+                            </p>
+                        </div>
+                        <div className="bg-white/40 backdrop-blur-sm border border-black/5 p-8 rounded-2xl group hover:bg-white transition-all duration-500">
+                            <h3 className="font-black text-xl mb-4 tracking-tight uppercase">Missions & Outreach</h3>
+                            <p className="text-stone-600 text-sm leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
+                                Funding our community projects and spreading the Gospel abroad.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
