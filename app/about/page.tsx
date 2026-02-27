@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 // ─── Scroll-animation hook ──────────────────────────────────────────────────
-function useFadeUp(threshold = 0.1) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.1) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
@@ -23,11 +23,11 @@ function useFadeUp(threshold = 0.1) {
 
 export default function AboutPage() {
     // Animation refs
-    const welcomeAnim = useFadeUp();
-    const visionAnim = useFadeUp();
-    const valuesAnim = useFadeUp();
-    const creedAnim = useFadeUp();
-    const ctaAnim = useFadeUp();
+    const { ref: welcomeRef, visible: welcomeVisible } = useFadeUp();
+    const { ref: visionRef, visible: visionVisible } = useFadeUp();
+    const { ref: valuesRef, visible: valuesVisible } = useFadeUp();
+    const { ref: creedRef, visible: creedVisible } = useFadeUp();
+    const { ref: ctaRef, visible: ctaVisible } = useFadeUp();
 
     return (
         <div className="flex flex-col bg-black">
@@ -82,21 +82,21 @@ export default function AboutPage() {
 
             {/* ── 2. THE NOTE (INTRO) ─────────────────────────────────────────── */}
             <section id="story" className="w-full bg-[#F2F0EB] py-28 sm:py-40 md:rounded-t-[4rem] relative z-20 -mt-10">
-                <div ref={welcomeAnim.ref} className="w-full max-w-4xl mx-auto px-6 text-center">
+                <div ref={welcomeRef} className="w-full max-w-4xl mx-auto px-6 text-center">
                     <span
-                        className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-black tracking-widest uppercase text-stone-500 mb-8 transition-all duration-1000 ${welcomeAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-black tracking-widest uppercase text-stone-500 mb-8 transition-all duration-1000 ${welcomeVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
                         A note for you
                     </span>
                     <h2
-                        className={`text-black text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tighter uppercase mb-12 transition-all duration-1000 delay-100 ${welcomeAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        className={`text-black text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tighter uppercase mb-12 transition-all duration-1000 delay-100 ${welcomeVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
                         WE ARE A DIVERSE,<br className="hidden sm:block" /> MULTI-GENERATIONAL<br className="hidden sm:block" /> FAMILY.
                     </h2>
                     <div
-                        className={`space-y-8 transition-all duration-1000 delay-200 ${welcomeAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        className={`space-y-8 transition-all duration-1000 delay-200 ${welcomeVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
                         <p
@@ -123,9 +123,9 @@ export default function AboutPage() {
                 {/* Background Accent */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--font-accent-color)]/5 rounded-full blur-[120px] pointer-events-none" />
 
-                <div ref={visionAnim.ref} className="w-full max-w-5xl mx-auto px-6 text-center relative z-10">
+                <div ref={visionRef} className="w-full max-w-5xl mx-auto px-6 text-center relative z-10">
                     <div
-                        className={`transition-all duration-1000 ${visionAnim.visible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                        className={`transition-all duration-1000 ${visionVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
                             }`}
                     >
                         <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-6 block">Our Vision</span>
@@ -139,7 +139,7 @@ export default function AboutPage() {
 
             {/* ── 4. VALUES ────────────────────────────────────────────────────── */}
             <section id="values" className="w-full bg-[#0A0A0A] py-28 sm:py-40">
-                <div ref={valuesAnim.ref} className="w-full max-w-7xl mx-auto px-6">
+                <div ref={valuesRef} className="w-full max-w-7xl mx-auto px-6">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 transition-all duration-1000">
                         <div className="max-w-xl">
                             <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-4 block">Our DNA</span>
@@ -185,7 +185,7 @@ export default function AboutPage() {
                         ].map((item, i) => (
                             <div
                                 key={item.title}
-                                className={`group bg-white/[0.02] border border-white/5 p-10 rounded-[2.5rem] transition-all duration-500 hover:bg-white/[0.05] hover:-translate-y-2 ${valuesAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                                className={`group bg-white/[0.02] border border-white/5 p-10 rounded-[2.5rem] transition-all duration-500 hover:bg-white/[0.05] hover:-translate-y-2 ${valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                                     }`}
                                 style={{ transitionDelay: `${i * 150}ms` }}
                             >
@@ -212,7 +212,7 @@ export default function AboutPage() {
                 {/* Background texture/grain overlay */}
                 <div className="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none bg-[url('/grain.png')]" />
 
-                <div ref={creedAnim.ref} className="w-full max-w-4xl mx-auto px-6 relative z-10">
+                <div ref={creedRef} className="w-full max-w-4xl mx-auto px-6 relative z-10">
                     <div className="text-center mb-20 animate-fade-in">
                         <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-6 block">Our Heartbeat</span>
                         <h2 className="text-white text-4xl sm:text-5xl font-black tracking-tighter uppercase">The TNHC Creed</h2>
@@ -220,7 +220,7 @@ export default function AboutPage() {
                     </div>
 
                     <div
-                        className={`flex flex-col gap-8 transition-all duration-1000 ${creedAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        className={`flex flex-col gap-8 transition-all duration-1000 ${creedVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
                         {[
@@ -251,8 +251,8 @@ export default function AboutPage() {
             {/* ── 6. FINAL CTA ─────────────────────────────────────────────────── */}
             <section className="w-full bg-black py-28 sm:py-40">
                 <div
-                    ref={ctaAnim.ref}
-                    className={`w-full max-w-4xl mx-auto px-6 text-center transition-all duration-1000 ${ctaAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    ref={ctaRef}
+                    className={`w-full max-w-4xl mx-auto px-6 text-center transition-all duration-1000 ${ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                         }`}
                 >
                     <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-6 block">Next steps</span>

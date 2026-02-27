@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 // ─── Scroll-animation hook ──────────────────────────────────────────────────
-function useFadeUp(threshold = 0.1) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.1) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
@@ -22,9 +22,8 @@ function useFadeUp(threshold = 0.1) {
 }
 
 export default function AboutPastorsPage() {
-    const heroAnim = useFadeUp();
-    const mainAnim = useFadeUp();
-    const secondaryAnim = useFadeUp();
+    const { ref: mainRef, visible: mainVisible } = useFadeUp();
+    const { ref: secondaryRef, visible: secondaryVisible } = useFadeUp();
 
     return (
         <div className="flex flex-col bg-black">
@@ -74,12 +73,12 @@ export default function AboutPastorsPage() {
 
             {/* ── 2. THE SPOTLIGHT (LEAD PASTORS) ────────────────────────────── */}
             <section className="w-full bg-black py-28 sm:py-48 relative overflow-hidden">
-                <div ref={mainAnim.ref} className="w-full max-w-7xl mx-auto px-6">
+                <div ref={mainRef} className="w-full max-w-7xl mx-auto px-6">
                     <div className="flex flex-col lg:flex-row gap-20 items-center lg:items-start">
 
                         {/* Portrait Container */}
                         <div
-                            className={`w-full lg:w-1/2 relative transition-all duration-1000 ${mainAnim.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+                            className={`w-full lg:w-1/2 relative transition-all duration-1000 ${mainVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
                                 }`}
                         >
                             <div className="aspect-[4/5] relative rounded-[2.5rem] overflow-hidden shadow-2xl z-10">
@@ -97,7 +96,7 @@ export default function AboutPastorsPage() {
 
                         {/* Text Content */}
                         <div
-                            className={`w-full lg:w-1/2 flex flex-col gap-10 transition-all duration-1000 delay-200 ${mainAnim.visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+                            className={`w-full lg:w-1/2 flex flex-col gap-10 transition-all duration-1000 delay-200 ${mainVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
                                 }`}
                         >
                             <div>
@@ -173,8 +172,8 @@ export default function AboutPastorsPage() {
             {/* ── 4. FINAL CTA ─────────────────────────────────────────────── */}
             <section className="w-full bg-black py-28 sm:py-40 border-t border-white/5">
                 <div
-                    ref={secondaryAnim.ref}
-                    className={`w-full max-w-4xl mx-auto px-6 text-center transition-all duration-1000 ${secondaryAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    ref={secondaryRef}
+                    className={`w-full max-w-4xl mx-auto px-6 text-center transition-all duration-1000 ${secondaryVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                         }`}
                 >
                     <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-6 block">Take your next step</span>

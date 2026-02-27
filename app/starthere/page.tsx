@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 // ─── Scroll-animation hook ──────────────────────────────────────────────────
-function useFadeUp(threshold = 0.1) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.1) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
@@ -50,10 +50,9 @@ function Marquee({ text }: { text: string }) {
 }
 
 export default function StartHerePage() {
-    const introAnim = useFadeUp();
-    const spotlightAnim = useFadeUp();
-    const expectationsAnim = useFadeUp();
-    const ctaAnim = useFadeUp();
+    const { ref: spotlightRef, visible: spotlightVisible } = useFadeUp();
+    const { ref: expectationsRef, visible: expectationsVisible } = useFadeUp();
+    const { ref: ctaRef, visible: ctaVisible } = useFadeUp();
 
     return (
         <div className="flex flex-col bg-black">
@@ -87,12 +86,12 @@ export default function StartHerePage() {
 
             {/* ── 2. THE SPOTLIGHT (INTRODUCTION) ────────────────────────────── */}
             <section className="w-full bg-black py-28 sm:py-48 relative overflow-hidden">
-                <div ref={spotlightAnim.ref} className="w-full max-w-7xl mx-auto px-6">
+                <div ref={spotlightRef} className="w-full max-w-7xl mx-auto px-6">
                     <div className="flex flex-col lg:flex-row gap-24 items-center">
 
                         {/* Image Side */}
                         <div
-                            className={`w-full lg:w-[45%] relative transition-all duration-1000 ${spotlightAnim.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+                            className={`w-full lg:w-[45%] relative transition-all duration-1000 ${spotlightVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
                                 }`}
                         >
                             <div className="aspect-[3/4] relative rounded-[3rem] overflow-hidden shadow-2xl z-10 grayscale hover:grayscale-0 transition-all duration-700">
@@ -110,7 +109,7 @@ export default function StartHerePage() {
 
                         {/* Content Side */}
                         <div
-                            className={`w-full lg:w-[55%] flex flex-col gap-10 transition-all duration-1000 delay-200 ${spotlightAnim.visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+                            className={`w-full lg:w-[55%] flex flex-col gap-10 transition-all duration-1000 delay-200 ${spotlightVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
                                 }`}
                         >
                             <div>
@@ -159,7 +158,7 @@ export default function StartHerePage() {
 
             {/* ── 4. WHAT TO EXPECT (EXPECTATIONS GRID) ────────────────────── */}
             <section className="w-full bg-[#0A0A0A] py-28 sm:py-48">
-                <div ref={expectationsAnim.ref} className="w-full max-w-7xl mx-auto px-6">
+                <div ref={expectationsRef} className="w-full max-w-7xl mx-auto px-6">
                     <div className="text-center mb-24">
                         <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-6 block">Sunday Experience</span>
                         <h2 className="text-white text-4xl sm:text-6xl font-black tracking-tighter uppercase">WHAT TO EXPECT</h2>
@@ -198,7 +197,7 @@ export default function StartHerePage() {
                         ].map((item, i) => (
                             <div
                                 key={item.title}
-                                className={`group flex flex-col transition-all duration-1000 ${expectationsAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                                className={`group flex flex-col transition-all duration-1000 ${expectationsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                                     }`}
                                 style={{ transitionDelay: `${i * 150}ms` }}
                             >
@@ -234,8 +233,8 @@ export default function StartHerePage() {
             {/* ── 6. FINAL CTA ─────────────────────────────────────────────────── */}
             <section className="w-full bg-black py-28 sm:py-40">
                 <div
-                    ref={ctaAnim.ref}
-                    className={`w-full max-w-4xl mx-auto px-6 text-center transition-all duration-1000 ${ctaAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    ref={ctaRef}
+                    className={`w-full max-w-4xl mx-auto px-6 text-center transition-all duration-1000 ${ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                         }`}
                 >
                     <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-6 block">Ready to start?</span>

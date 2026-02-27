@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 // ─── Scroll-animation hook ──────────────────────────────────────────────────
-function useFadeUp(threshold = 0.1) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.1) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
@@ -68,10 +68,9 @@ function PhotoReel({ photos }: { photos: { src: string; alt: string }[] }) {
 }
 
 export default function AboutHistoryPage() {
-    const heroAnim = useFadeUp();
-    const storyAnim = useFadeUp();
-    const foundingAnim = useFadeUp();
-    const reelAnim = useFadeUp();
+    const { ref: storyRef, visible: storyVisible } = useFadeUp();
+    const { ref: foundingRef, visible: foundingVisible } = useFadeUp();
+    const { ref: reelRef } = useFadeUp();
 
     const reelPhotos = [
         { src: "/hero.jpg", alt: "TNHC gathering" },
@@ -130,21 +129,21 @@ export default function AboutHistoryPage() {
 
             {/* ── 2. THE STORY (MISSION) ────────────────────────────────────── */}
             <section className="w-full bg-[#F2F0EB] py-28 sm:py-48 md:rounded-t-[4rem] relative z-20 -mt-10">
-                <div ref={storyAnim.ref} className="w-full max-w-4xl mx-auto px-6 text-center">
+                <div ref={storyRef} className="w-full max-w-4xl mx-auto px-6 text-center">
                     <span
-                        className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-black tracking-widest uppercase text-stone-500 mb-8 transition-all duration-1000 ${storyAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-black tracking-widest uppercase text-stone-500 mb-8 transition-all duration-1000 ${storyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
                         Our Roots
                     </span>
                     <h2
-                        className={`text-black text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.9] tracking-tighter uppercase mb-12 transition-all duration-1000 delay-100 ${storyAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        className={`text-black text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.9] tracking-tighter uppercase mb-12 transition-all duration-1000 delay-100 ${storyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
                         BUILT FOR THE<br className="hidden sm:block" /> CITY OF ACCRA
                     </h2>
                     <div
-                        className={`space-y-8 transition-all duration-1000 delay-200 ${storyAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        className={`space-y-8 transition-all duration-1000 delay-200 ${storyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
                         <p
@@ -174,12 +173,12 @@ export default function AboutHistoryPage() {
 
             {/* ── 3. FOUNDING MOMENT ────────────────────────────────────────── */}
             <section className="w-full bg-black py-28 sm:py-48 relative overflow-hidden border-y border-white/5">
-                <div ref={foundingAnim.ref} className="w-full max-w-7xl mx-auto px-6">
+                <div ref={foundingRef} className="w-full max-w-7xl mx-auto px-6">
                     <div className="flex flex-col lg:flex-row gap-20 items-center">
 
                         {/* Image Side */}
                         <div
-                            className={`w-full lg:w-1/2 transition-all duration-1000 ${foundingAnim.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+                            className={`w-full lg:w-1/2 transition-all duration-1000 ${foundingVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
                                 }`}
                         >
                             <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
@@ -198,7 +197,7 @@ export default function AboutHistoryPage() {
 
                         {/* Content Side */}
                         <div
-                            className={`w-full lg:w-1/2 transition-all duration-1000 delay-200 ${foundingAnim.visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+                            className={`w-full lg:w-1/2 transition-all duration-1000 delay-200 ${foundingVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
                                 }`}
                         >
                             <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-6 block">The Beginning</span>
@@ -233,7 +232,7 @@ export default function AboutHistoryPage() {
 
             {/* ── 4. MEMORIES (PHOTO REEL) ──────────────────────────────────── */}
             <section className="w-full bg-[#0A0A0A] py-28 sm:py-40">
-                <div ref={reelAnim.ref} className="w-full max-w-7xl mx-auto px-6 mb-16">
+                <div ref={reelRef} className="w-full max-w-7xl mx-auto px-6 mb-16">
                     <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-4 block">Archive</span>
                     <h2 className="text-white text-3xl sm:text-5xl font-black tracking-tighter uppercase">MEMORIES OF<br />FAITHFULNESS</h2>
                 </div>

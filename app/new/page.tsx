@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 // ─── Scroll-animation hook ──────────────────────────────────────────────────
-function useFadeUp(threshold = 0.15) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.15) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
@@ -57,10 +57,10 @@ function HighlightCard({
 // ─── Page ────────────────────────────────────────────────────────────────────
 export default function NewPage() {
     // Section refs
-    const welcome = useFadeUp();
-    const highlights = useFadeUp();
-    const gather = useFadeUp();
-    const cta = useFadeUp();
+    const { ref: welcomeRef, visible: welcomeVisible } = useFadeUp();
+    const { ref: highlightsRef, visible: highlightsVisible } = useFadeUp();
+    const { ref: gatherRef, visible: gatherVisible } = useFadeUp();
+    const { ref: ctaRef, visible: ctaVisible } = useFadeUp();
 
     const [showVideo, setShowVideo] = useState(false);
     const videoId = "dQw4w9WgXcQ"; // Using the same ID as welcome for now
@@ -69,13 +69,15 @@ export default function NewPage() {
         <div className="flex flex-col">
 
             {/* ── 1. HERO ──────────────────────────────────────────────────────── */}
-            <section className="relative w-full min-h-[70vh] flex items-end bg-black overflow-hidden">
+            <section className="relative w-full h-[70vh] flex items-end bg-black overflow-hidden">
                 {/* Background image */}
                 <div className="absolute inset-0">
-                    <img
+                    <Image
                         src="/hero.jpg"
                         alt="TNHC Church"
-                        className="w-full h-full object-cover opacity-70"
+                        fill
+                        className="object-cover opacity-70"
+                        priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 </div>
@@ -102,15 +104,15 @@ export default function NewPage() {
 
             {/* ── 2. WELCOME TEXT ──────────────────────────────────────────────── */}
             <section className="w-full bg-[#F2F0EB] md:rounded-t-[4rem] mt-[-4rem] relative z-10">
-                <div ref={welcome.ref} className="w-full max-w-4xl mx-auto px-6 py-20 sm:py-28 text-center">
+                <div ref={welcomeRef} className="w-full max-w-4xl mx-auto px-6 py-20 sm:py-28 text-center">
                     <span
-                        className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-medium tracking-widest uppercase text-stone-500 mb-8 transition-all duration-700 ${welcome.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                        className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-medium tracking-widest uppercase text-stone-500 mb-8 transition-all duration-700 ${welcomeVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                             }`}
                     >
                         A note for you
                     </span>
                     <p
-                        className={`text-black text-xl sm:text-2xl lg:text-3xl leading-relaxed transition-all duration-700 delay-100 ${welcome.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                        className={`text-black text-xl sm:text-2xl lg:text-3xl leading-relaxed transition-all duration-700 delay-100 ${welcomeVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                             }`}
                         style={{ fontFamily: "var(--font-dm-sans)" }}
                     >
@@ -122,7 +124,7 @@ export default function NewPage() {
                         <strong>Jesus and to each other.</strong>
                     </p>
                     <p
-                        className={`mt-6 text-stone-500 text-lg transition-all duration-700 delay-200 ${welcome.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                        className={`mt-6 text-stone-500 text-lg transition-all duration-700 delay-200 ${welcomeVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                             }`}
                         style={{ fontFamily: "var(--font-dm-sans)" }}
                     >
@@ -192,10 +194,10 @@ export default function NewPage() {
 
             {/* ── 4. HIGHLIGHTS ────────────────────────────────────────────────── */}
             <section className="w-full bg-stone-100 py-20 sm:py-28">
-                <div ref={highlights.ref} className="w-full max-w-7xl mx-auto px-6">
+                <div ref={highlightsRef} className="w-full max-w-7xl mx-auto px-6">
                     {/* Header */}
                     <div
-                        className={`mb-16 transition-all duration-700 ${highlights.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                        className={`mb-16 transition-all duration-700 ${highlightsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                             }`}
                     >
                         <span className="inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-medium tracking-widest uppercase text-stone-500 mb-6">
@@ -215,42 +217,42 @@ export default function NewPage() {
                             title="A Community You'll Actually Love"
                             body="TNHC is an amazing, diverse, and energetic community of people following Jesus together. Come as you are — you'll fit right in."
                             delay="delay-75"
-                            visible={highlights.visible}
+                            visible={highlightsVisible}
                         />
                         <HighlightCard
                             number="02"
                             title="Real Teaching, Real Life"
                             body="Every Sunday we dig into Scripture in a way that's relevant, practical, and honest. No fluff. Just truth that actually helps."
                             delay="delay-150"
-                            visible={highlights.visible}
+                            visible={highlightsVisible}
                         />
                         <HighlightCard
                             number="03"
                             title="Kids Who Can't Wait to Come Back"
                             body="Our kids program is full of adventure and exploration of God's love. Our team genuinely loves children — and it shows."
                             delay="delay-200"
-                            visible={highlights.visible}
+                            visible={highlightsVisible}
                         />
                         <HighlightCard
                             number="04"
                             title="Youth That Goes Deep"
                             body="Our youth ministry is a safe, exciting space for teenagers to wrestle with faith, belong, and grow into who God made them to be."
                             delay="delay-300"
-                            visible={highlights.visible}
+                            visible={highlightsVisible}
                         />
                         <HighlightCard
                             number="05"
                             title="Worship That Moves You"
                             body="Our worship experience is live, full-band, and designed to help you encounter God — not just as a spectator but as a participant."
                             delay="delay-400"
-                            visible={highlights.visible}
+                            visible={highlightsVisible}
                         />
                         <HighlightCard
                             number="06"
                             title="A Church on Mission"
                             body="We believe God loves Accra and we're serious about reaching our city. When you join TNHC, you join a movement — not just a meeting."
                             delay="delay-500"
-                            visible={highlights.visible}
+                            visible={highlightsVisible}
                         />
                     </div>
                 </div>
@@ -258,9 +260,9 @@ export default function NewPage() {
 
             {/* ── 5. SERVICE TIMES ─────────────────────────────────────────────── */}
             <section className="w-full bg-black py-20 sm:py-28">
-                <div ref={gather.ref} className="w-full max-w-7xl mx-auto px-6">
+                <div ref={gatherRef} className="w-full max-w-7xl mx-auto px-6">
                     <div
-                        className={`bg-stone-900 md:rounded-3xl px-8 sm:px-14 py-14 transition-all duration-700 ${gather.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                        className={`bg-stone-900 md:rounded-3xl px-8 sm:px-14 py-14 transition-all duration-700 ${gatherVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                             }`}
                     >
                         <span className="inline-block border border-stone-600 rounded-lg px-3 py-1 text-xs font-medium tracking-widest uppercase text-stone-400 mb-7">
@@ -323,8 +325,8 @@ export default function NewPage() {
             {/* ── 6. FINAL CTA ─────────────────────────────────────────────────── */}
             <section className="w-full bg-[#F2F0EB] py-20 sm:py-28">
                 <div
-                    ref={cta.ref}
-                    className={`w-full max-w-3xl mx-auto px-6 text-center transition-all duration-700 ${cta.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    ref={ctaRef}
+                    className={`w-full max-w-3xl mx-auto px-6 text-center transition-all duration-700 ${ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                         }`}
                 >
                     <p

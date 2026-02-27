@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 const SOCIAL_HANDLES = [
   {
@@ -139,13 +140,13 @@ export default function ContactSection() {
             <br className="hidden sm:block" />
             Find us where you are.
           </p>
-          <a
+          <Link
             href="/contact-us"
             className={`inline-block border-2 border-stone-800 text-stone-400 hover:text-white hover:border-white text-xs font-bold tracking-widest uppercase px-10 py-4 rounded-full transition-all duration-300 ${visible ? "opacity-100" : "opacity-0"
               }`}
           >
             Reach out to us →
-          </a>
+          </Link>
         </div>
       </div>
     </section>

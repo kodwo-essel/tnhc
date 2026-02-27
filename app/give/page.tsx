@@ -7,8 +7,8 @@ import Image from "next/image";
 // ─────────────────────────────────────────────────────────────
 // Fade-up animation hook
 // ─────────────────────────────────────────────────────────────
-function useFadeUp(threshold = 0.05) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.05) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
@@ -82,10 +82,10 @@ const GIVING_METHODS: GivingMethod[] = [
 ];
 
 export default function GivePage() {
-    const heroAnim = useFadeUp(0.02);
-    const methodsAnim = useFadeUp(0.05);
-    const whyAnim = useFadeUp(0.05);
-    const legacyAnim = useFadeUp(0.05);
+    const { ref: heroRef, visible: heroVisible } = useFadeUp(0.02);
+    const { ref: methodsRef, visible: methodsVisible } = useFadeUp(0.05);
+    const { ref: whyRef, visible: whyVisible } = useFadeUp(0.05);
+    const { ref: legacyRef, visible: legacyVisible } = useFadeUp(0.05);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -116,8 +116,8 @@ export default function GivePage() {
 
                 {/* Hero Content */}
                 <div
-                    ref={heroAnim.ref}
-                    className={`relative z-10 flex flex-col items-center gap-6 px-6 text-center transition-all duration-1000 ${heroAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                    ref={heroRef}
+                    className={`relative z-10 flex flex-col items-center gap-6 px-6 text-center transition-all duration-1000 ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                         }`}
                 >
                     <p className="text-xs font-bold tracking-[0.4em] uppercase text-[var(--font-accent-color)]">
@@ -174,8 +174,8 @@ export default function GivePage() {
             <section id="ways-to-give" className="w-full bg-[#0A0A0A] py-24 sm:py-32 border-y border-white/5">
                 <div className="w-full max-w-6xl mx-auto px-6">
                     <div
-                        ref={methodsAnim.ref}
-                        className={`transition-all duration-1000 ${methodsAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                        ref={methodsRef}
+                        className={`transition-all duration-1000 ${methodsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                             }`}
                     >
                         <div className="text-center mb-20">
@@ -236,20 +236,20 @@ export default function GivePage() {
 
             {/* ── 4. WHY WE GIVE ──────────────────────────────────────────────── */}
             <section className="w-full bg-[#F2F0EB] py-24 sm:py-32">
-                <div ref={whyAnim.ref} className="w-full max-w-4xl mx-auto px-6 text-center">
+                <div ref={whyRef} className="w-full max-w-4xl mx-auto px-6 text-center">
                     <span
-                        className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-medium tracking-widest uppercase text-stone-500 mb-8 transition-all duration-700 ${whyAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                        className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-medium tracking-widest uppercase text-stone-500 mb-8 transition-all duration-700 ${whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                             }`}
                     >
                         Our Philosophy
                     </span>
                     <h2
-                        className={`text-black text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tighter uppercase mb-10 transition-all duration-700 delay-100 ${whyAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                        className={`text-black text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tighter uppercase mb-10 transition-all duration-700 delay-100 ${whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                     >
                         Giving is an act<br className="hidden sm:block" /> of worship
                     </h2>
                     <div
-                        className={`space-y-8 transition-all duration-700 delay-200 ${whyAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                        className={`space-y-8 transition-all duration-700 delay-200 ${whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                     >
                         <p
                             className="text-black text-xl sm:text-2xl leading-relaxed italic font-medium"
@@ -268,7 +268,7 @@ export default function GivePage() {
                         </p>
                     </div>
                     <div
-                        className={`pt-12 transition-all duration-700 delay-300 ${whyAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                        className={`pt-12 transition-all duration-700 delay-300 ${whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                     >
                         <Link
                             href="/about"
@@ -295,8 +295,8 @@ export default function GivePage() {
 
                 <div className="relative z-10 w-full max-w-5xl mx-auto px-6">
                     <div
-                        ref={legacyAnim.ref}
-                        className={`text-center space-y-8 transition-all duration-1000 ${legacyAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                        ref={legacyRef}
+                        className={`text-center space-y-8 transition-all duration-1000 ${legacyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                             }`}
                     >
                         <div className="space-y-4">

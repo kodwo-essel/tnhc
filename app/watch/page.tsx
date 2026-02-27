@@ -58,8 +58,8 @@ const RECENT_SERMONS: Sermon[] = [
 ];
 
 // ─── Scroll-animation hook ──────────────────────────────────────────────────
-function useFadeUp(threshold = 0.1) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.1) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
@@ -85,7 +85,7 @@ function LiveBadge() {
 
 function SermonCard({ sermon, index }: { sermon: Sermon; index: number }) {
     const thumb = sermon.thumbnail ?? `https://img.youtube.com/vi/${sermon.id}/hqdefault.jpg`;
-    const { ref, visible } = useFadeUp();
+    const { ref, visible } = useFadeUp<HTMLAnchorElement>();
 
     return (
         <a
@@ -134,9 +134,8 @@ function SermonCard({ sermon, index }: { sermon: Sermon; index: number }) {
 }
 
 export default function WatchPage() {
-    const hero = useFadeUp();
-    const streamSection = useFadeUp();
-    const recentSection = useFadeUp();
+    const { ref: streamRef, visible: streamVisible } = useFadeUp();
+    const { ref: recentRef, visible: recentVisible } = useFadeUp();
 
     const liveEmbedSrc = `https://www.youtube-nocookie.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=0&rel=0`;
 
@@ -179,8 +178,8 @@ export default function WatchPage() {
             {/* ── 2. LIVE STREAM EMBED ──────────────────────────────────────────── */}
             <section className="w-full bg-black pb-28 sm:pb-48 -mt-10 overflow-hidden relative z-20">
                 <div
-                    ref={streamSection.ref}
-                    className={`w-full max-w-6xl mx-auto px-6 transition-all duration-1000 ${streamSection.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                    ref={streamRef}
+                    className={`w-full max-w-6xl mx-auto px-6 transition-all duration-1000 ${streamVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                         }`}
                 >
                     {/* Stream container */}
@@ -220,8 +219,8 @@ export default function WatchPage() {
             {/* ── 3. RECENT SERMONS ─────────────────────────────────────────────── */}
             <section className="w-full bg-[#0A0A0A] py-28 sm:py-48 border-y border-white/5">
                 <div
-                    ref={recentSection.ref}
-                    className={`w-full max-w-7xl mx-auto px-6 transition-all duration-1000 ${recentSection.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                    ref={recentRef}
+                    className={`w-full max-w-7xl mx-auto px-6 transition-all duration-1000 ${recentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                         }`}
                 >
                     {/* Header */}

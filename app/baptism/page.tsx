@@ -2,20 +2,19 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 // ─────────────────────────────────────────────────────────────
 // Fade-up animation hook
 // ─────────────────────────────────────────────────────────────
-function useFadeUp(threshold = 0.05) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.05) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
         const obs = new IntersectionObserver(
-            ([e]) => {
-                if (e.isIntersecting) { setVisible(true); obs.disconnect(); }
-            },
+            ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
             { threshold }
         );
         obs.observe(el);
@@ -28,28 +27,30 @@ function useFadeUp(threshold = 0.05) {
 // Page component
 // ─────────────────────────────────────────────────────────────
 export default function BaptismPage() {
-    const heroAnim = useFadeUp(0.02);
-    const photoAnim = useFadeUp(0.05);
-    const textAnim = useFadeUp(0.05);
+    const { ref: heroRef, visible: heroVisible } = useFadeUp(0.02);
+    const { ref: photoRef, visible: photoVisible } = useFadeUp(0.05);
+    const { ref: textRef, visible: textVisible } = useFadeUp(0.05);
 
     return (
         <div className="flex flex-col bg-white">
 
             {/* ── 1. HERO ──────────────────────────────────────────────────── */}
-            <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] flex items-end justify-start overflow-hidden">
+            <section className="relative w-full h-[60vh] sm:h-[70vh] flex items-end justify-start overflow-hidden">
                 {/* Background photo */}
-                <img
+                <Image
                     src="/hero.jpg"
                     alt="Baptism at The New House Church"
-                    className="absolute inset-0 w-full h-full object-cover object-center"
+                    fill
+                    className="object-cover object-center"
+                    priority
                 />
                 {/* Very light overlay — mirrors the 0.14 opacity from Squarespace */}
                 <div className="absolute inset-0 bg-black/40" />
 
                 {/* "BAPTISM" heading — bottom-left aligned like the original */}
                 <div
-                    ref={heroAnim.ref}
-                    className={`relative z-10 px-8 pb-12 sm:px-16 sm:pb-16 transition-all duration-700 ${heroAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                    ref={heroRef}
+                    className={`relative z-10 px-8 pb-12 sm:px-16 sm:pb-16 transition-all duration-700 ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                         }`}
                 >
                     <h1
@@ -74,23 +75,24 @@ export default function BaptismPage() {
 
                         {/* ── Left photo ──────────────────────────────────────────── */}
                         <div
-                            ref={photoAnim.ref}
-                            className={`hidden lg:block transition-all duration-700 delay-0 ${photoAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                            ref={photoRef}
+                            className={`hidden lg:block transition-all duration-700 delay-0 ${photoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                                 }`}
                         >
-                            <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-md bg-stone-100">
-                                <img
+                            <div className="w-full aspect-[3/4] relative rounded-2xl overflow-hidden shadow-md bg-stone-100">
+                                <Image
                                     src="/speaker.jpg"
                                     alt="Baptism moment"
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    className="object-cover"
                                 />
                             </div>
                         </div>
 
                         {/* ── Center text ─────────────────────────────────────────── */}
                         <div
-                            ref={textAnim.ref}
-                            className={`flex flex-col gap-6 items-center text-center transition-all duration-700 delay-100 ${textAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                            ref={textRef}
+                            className={`flex flex-col gap-6 items-center text-center transition-all duration-700 delay-100 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                                 }`}
                         >
                             {/* Eyebrow */}
@@ -140,23 +142,25 @@ export default function BaptismPage() {
 
                         {/* ── Right photos (stacked) ───────────────────────────────── */}
                         <div
-                            className={`hidden lg:flex flex-col gap-5 transition-all duration-700 delay-200 ${photoAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                            className={`hidden lg:flex flex-col gap-5 transition-all duration-700 delay-200 ${photoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                                 }`}
                         >
                             {/* Tall portrait */}
-                            <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-md bg-stone-100">
-                                <img
+                            <div className="w-full aspect-[3/4] relative rounded-2xl overflow-hidden shadow-md bg-stone-100">
+                                <Image
                                     src="/prayer.jpg"
                                     alt="Baptism community"
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    className="object-cover"
                                 />
                             </div>
                             {/* Landscape */}
-                            <div className="w-full aspect-[3/2] rounded-2xl overflow-hidden shadow-md bg-stone-100">
-                                <img
+                            <div className="w-full aspect-[3/2] relative rounded-2xl overflow-hidden shadow-md bg-stone-100">
+                                <Image
                                     src="/hero.jpg"
                                     alt="Baptism Sunday"
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    className="object-cover"
                                 />
                             </div>
                         </div>
@@ -164,11 +168,12 @@ export default function BaptismPage() {
                     </div>
 
                     {/* Mobile: single photo below text */}
-                    <div className="lg:hidden mt-10 w-full aspect-video rounded-2xl overflow-hidden shadow-md bg-stone-100">
-                        <img
+                    <div className="lg:hidden mt-10 w-full aspect-video relative rounded-2xl overflow-hidden shadow-md bg-stone-100">
+                        <Image
                             src="/speaker.jpg"
                             alt="Baptism at TNHC"
-                            className="w-full h-full object-cover"
+                            fill
+                            className="object-cover"
                         />
                     </div>
                 </div>

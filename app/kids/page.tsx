@@ -2,23 +2,19 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 // ─────────────────────────────────────────────────────────────
 // Fade-up animation hook
 // ─────────────────────────────────────────────────────────────
-function useFadeUp(threshold = 0.05) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.05) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
         const obs = new IntersectionObserver(
-            ([e]) => {
-                if (e.isIntersecting) {
-                    setVisible(true);
-                    obs.disconnect();
-                }
-            },
+            ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
             { threshold }
         );
         obs.observe(el);
@@ -85,26 +81,28 @@ const POLICIES = [
 // Component
 // ─────────────────────────────────────────────────────────────
 export default function KidsPage() {
-    const heroAnim = useFadeUp(0.02);
-    const introAnim = useFadeUp(0.05);
-    const valuesAnim = useFadeUp(0.05);
-    const ageGroupsAnim = useFadeUp(0.05);
-    const policiesAnim = useFadeUp(0.05);
+    const { ref: heroRef, visible: heroVisible } = useFadeUp(0.02);
+    const { ref: introRef, visible: introVisible } = useFadeUp(0.05);
+    const { ref: valuesRef, visible: valuesVisible } = useFadeUp(0.05);
+    const { ref: ageGroupsRef, visible: ageGroupsVisible } = useFadeUp(0.05);
+    const { ref: policiesRef, visible: policiesVisible } = useFadeUp(0.05);
 
     return (
         <div className="flex flex-col bg-white">
             {/* ── 1. HERO ──────────────────────────────────────────────────── */}
-            <section className="relative w-full min-h-[60vh] sm:min-h-[80vh] flex items-end justify-start overflow-hidden bg-stone-900">
-                <img
+            <section className="relative w-full h-[60vh] sm:h-[80vh] flex items-end justify-start overflow-hidden bg-stone-900">
+                <Image
                     src="/kids-hero.png"
                     alt="Tnhc Kids Ministry"
-                    className="absolute inset-0 w-full h-full object-cover object-center scale-105 active:scale-100 transition-transform duration-[10s]"
+                    fill
+                    className="object-cover object-center scale-105 active:scale-100 transition-transform duration-[10s]"
+                    priority
                 />
                 <div className="absolute inset-0 bg-black/30" />
 
                 <div
-                    ref={heroAnim.ref}
-                    className={`relative z-10 px-8 pb-12 sm:px-16 sm:pb-16 transition-all duration-1000 ${heroAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                    ref={heroRef}
+                    className={`relative z-10 px-8 pb-12 sm:px-16 sm:pb-16 transition-all duration-1000 ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                         }`}
                 >
                     <h1
@@ -119,8 +117,8 @@ export default function KidsPage() {
             {/* ── 2. INTRO SECTION ─────────────────────────────────────────── */}
             <section className="w-full py-24 px-6 border-b border-stone-100">
                 <div
-                    ref={introAnim.ref}
-                    className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${introAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    ref={introRef}
+                    className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${introVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                         }`}
                 >
                     <p className="text-xs font-bold tracking-[0.3em] uppercase text-stone-400 mb-6">
@@ -142,8 +140,8 @@ export default function KidsPage() {
             <section className="w-full py-20 bg-stone-50">
                 <div className="max-w-6xl mx-auto px-6">
                     <div
-                        ref={valuesAnim.ref}
-                        className={`grid grid-cols-2 lg:grid-cols-5 gap-8 transition-all duration-1000 ${valuesAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        ref={valuesRef}
+                        className={`grid grid-cols-2 lg:grid-cols-5 gap-8 transition-all duration-1000 ${valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
                         {["Discover", "Connect", "Grow", "Serve", "Share"].map((v, i) => (
@@ -162,18 +160,19 @@ export default function KidsPage() {
             <section className="w-full py-24 px-6">
                 <div className="max-w-6xl mx-auto">
                     <div
-                        ref={ageGroupsAnim.ref}
-                        className={`grid grid-cols-1 md:grid-cols-2 gap-12 transition-all duration-1000 ${ageGroupsAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                        ref={ageGroupsRef}
+                        className={`grid grid-cols-1 md:grid-cols-2 gap-12 transition-all duration-1000 ${ageGroupsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                             }`}
                     >
                         {AGE_GROUPS.map((group) => (
                             <div key={group.title} className="flex flex-col gap-6 group">
                                 {group.image && (
-                                    <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden bg-stone-100 shadow-md">
-                                        <img
+                                    <div className="w-full aspect-[16/9] relative rounded-2xl overflow-hidden bg-stone-100 shadow-md">
+                                        <Image
                                             src={group.image}
                                             alt={group.title}
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-700"
                                         />
                                     </div>
                                 )}
@@ -196,8 +195,8 @@ export default function KidsPage() {
             <section className="w-full py-24 bg-stone-900 overflow-hidden">
                 <div className="max-w-6xl mx-auto px-6">
                     <div
-                        ref={policiesAnim.ref}
-                        className={`space-y-16 transition-all duration-1000 ${policiesAnim.visible ? "opacity-100" : "opacity-0"
+                        ref={policiesRef}
+                        className={`space-y-16 transition-all duration-1000 ${policiesVisible ? "opacity-100" : "opacity-0"
                             }`}
                     >
                         <div className="flex flex-col items-center text-center">

@@ -2,23 +2,19 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 // ─────────────────────────────────────────────────────────────
 // Fade-up animation hook
 // ─────────────────────────────────────────────────────────────
-function useFadeUp(threshold = 0.05) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.05) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
         const obs = new IntersectionObserver(
-            ([e]) => {
-                if (e.isIntersecting) {
-                    setVisible(true);
-                    obs.disconnect();
-                }
-            },
+            ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
             { threshold }
         );
         obs.observe(el);
@@ -31,27 +27,28 @@ function useFadeUp(threshold = 0.05) {
 // Component
 // ─────────────────────────────────────────────────────────────
 export default function YouthPage() {
-    const heroAnim = useFadeUp(0.02);
-    const introAnim = useFadeUp(0.05);
-    const gatheringAnim = useFadeUp(0.05);
-    const activityAnim = useFadeUp(0.05);
-    const contactAnim = useFadeUp(0.05);
+    const { ref: heroRef, visible: heroVisible } = useFadeUp(0.02);
+    const { ref: introRef, visible: introVisible } = useFadeUp(0.05);
+    const { ref: gatheringRef, visible: gatheringVisible } = useFadeUp(0.05);
+    const { ref: contactRef, visible: contactVisible } = useFadeUp(0.05);
 
     return (
         <div className="flex flex-col bg-white">
             {/* ── 1. HERO ──────────────────────────────────────────────────── */}
-            <section className="relative w-full min-h-[60vh] sm:min-h-[80vh] flex items-end justify-start overflow-hidden bg-stone-900">
-                <img
+            <section className="relative w-full h-[60vh] sm:h-[80vh] flex items-end justify-start overflow-hidden bg-stone-900">
+                <Image
                     src="/youth-hero.png"
                     alt="TNHC Youth Ministry"
-                    className="absolute inset-0 w-full h-full object-cover object-center"
+                    fill
+                    className="object-cover object-center"
+                    priority
                 />
                 {/* Darker overlay for high energy vibrant look */}
                 <div className="absolute inset-0 bg-black/40" />
 
                 <div
-                    ref={heroAnim.ref}
-                    className={`relative z-10 px-8 pb-12 sm:px-16 sm:pb-16 transition-all duration-1000 ${heroAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                    ref={heroRef}
+                    className={`relative z-10 px-8 pb-12 sm:px-16 sm:pb-16 transition-all duration-1000 ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                         }`}
                 >
                     <h1
@@ -66,8 +63,8 @@ export default function YouthPage() {
             {/* ── 2. INTRO SECTION ─────────────────────────────────────────── */}
             <section className="w-full py-24 px-6">
                 <div
-                    ref={introAnim.ref}
-                    className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${introAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    ref={introRef}
+                    className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${introVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                         }`}
                 >
                     <p className="text-xs font-bold tracking-[0.3em] uppercase text-stone-400 mb-6">
@@ -88,8 +85,8 @@ export default function YouthPage() {
             <section className="w-full py-20 bg-stone-50 border-y border-stone-100">
                 <div className="max-w-6xl mx-auto px-6">
                     <div
-                        ref={gatheringAnim.ref}
-                        className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center transition-all duration-1000 ${gatheringAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                        ref={gatheringRef}
+                        className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center transition-all duration-1000 ${gatheringVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                             }`}
                     >
                         <div className="space-y-8">
@@ -116,10 +113,11 @@ export default function YouthPage() {
                         </div>
 
                         <div className="relative aspect-square sm:aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-2xl">
-                            <img
+                            <Image
                                 src="/youth-activities.png"
                                 alt="Youth Fellowship"
-                                className="w-full h-full object-cover"
+                                fill
+                                className="object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                             <div className="absolute bottom-8 left-8 right-8">
@@ -134,8 +132,8 @@ export default function YouthPage() {
             <section className="w-full py-24 px-6 bg-white overflow-hidden">
                 <div className="max-w-4xl mx-auto text-center">
                     <div
-                        ref={contactAnim.ref}
-                        className={`space-y-10 transition-all duration-1000 ${contactAnim.visible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                        ref={contactRef}
+                        className={`space-y-10 transition-all duration-1000 ${contactVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
                             }`}
                     >
                         <h2 className="text-4xl font-bold text-black uppercase tracking-tight">Stay Connected</h2>

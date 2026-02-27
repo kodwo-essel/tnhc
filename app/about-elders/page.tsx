@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 // ─── Scroll-animation hook ──────────────────────────────────────────────────
-function useFadeUp(threshold = 0.1) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.1) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
@@ -56,9 +56,9 @@ const ELDERS: Elder[] = [
 ];
 
 export default function AboutEldersPage() {
-    const heroAnim = useFadeUp();
-    const introAnim = useFadeUp();
-    const gridAnim = useFadeUp();
+    const { ref: boardRef, visible: boardVisible } = useFadeUp(0.05);
+    const { ref: introRef, visible: introVisible } = useFadeUp();
+    const { ref: gridRef, visible: gridVisible } = useFadeUp();
 
     return (
         <div className="flex flex-col bg-black">
@@ -108,21 +108,21 @@ export default function AboutEldersPage() {
 
             {/* ── 2. INTRO (THE ROLE) ───────────────────────────────────────── */}
             <section className="w-full bg-[#F2F0EB] py-28 sm:py-40 md:rounded-t-[4rem] relative z-20 -mt-10 text-center">
-                <div ref={introAnim.ref} className="w-full max-w-4xl mx-auto px-6">
+                <div ref={introRef} className="w-full max-w-4xl mx-auto px-6">
                     <span
-                        className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-black tracking-widest uppercase text-stone-500 mb-8 transition-all duration-1000 ${introAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        className={`inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-black tracking-widest uppercase text-stone-500 mb-8 transition-all duration-1000 ${introVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
                         Spiritual Oversight
                     </span>
                     <h2
-                        className={`text-black text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter uppercase mb-12 transition-all duration-1000 delay-100 ${introAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        className={`text-black text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tighter uppercase mb-12 transition-all duration-1000 delay-100 ${introVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
                         Wisdom & Stewardship
                     </h2>
                     <div
-                        className={`space-y-8 transition-all duration-1000 delay-200 ${introAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        className={`space-y-8 transition-all duration-1000 delay-200 ${introVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
                         <p
@@ -146,12 +146,12 @@ export default function AboutEldersPage() {
 
             {/* ── 3. ELDERS GRID ────────────────────────────────────────────── */}
             <section className="w-full bg-black py-28 sm:py-48 relative overflow-hidden">
-                <div ref={gridAnim.ref} className="w-full max-w-7xl mx-auto px-6">
+                <div ref={gridRef} className="w-full max-w-7xl mx-auto px-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
                         {ELDERS.map((elder, i) => (
                             <div
                                 key={i}
-                                className={`group flex flex-col gap-8 transition-all duration-1000 ${gridAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                                className={`group flex flex-col gap-8 transition-all duration-1000 ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                                     }`}
                                 style={{ transitionDelay: `${i * 150}ms` }}
                             >

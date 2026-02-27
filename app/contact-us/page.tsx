@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 // ─── Scroll-animation hook ──────────────────────────────────────────────────
-function useFadeUp(threshold = 0.1) {
-    const ref = useRef<HTMLDivElement>(null);
+function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.1) {
+    const ref = useRef<T>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
         const el = ref.current;
@@ -22,10 +22,9 @@ function useFadeUp(threshold = 0.1) {
 }
 
 export default function ContactUsPage() {
-    const heroAnim = useFadeUp();
-    const contactAnim = useFadeUp();
-    const infoAnim = useFadeUp();
-    const mapAnim = useFadeUp();
+    const { ref: contactRef, visible: contactVisible } = useFadeUp();
+    const { ref: infoRef, visible: infoVisible } = useFadeUp();
+    const { ref: mapRef } = useFadeUp();
 
     return (
         <div className="flex flex-col bg-black">
@@ -66,8 +65,8 @@ export default function ContactUsPage() {
 
                         {/* Left Side: Direct Info */}
                         <div
-                            ref={infoAnim.ref}
-                            className={`w-full lg:w-1/3 flex flex-col gap-16 transition-all duration-1000 ${infoAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                            ref={infoRef}
+                            className={`w-full lg:w-1/3 flex flex-col gap-16 transition-all duration-1000 ${infoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                                 }`}
                         >
                             <div>
@@ -124,8 +123,8 @@ export default function ContactUsPage() {
 
                         {/* Right Side: Contact Form */}
                         <div
-                            ref={contactAnim.ref}
-                            className={`w-full lg:w-2/3 transition-all duration-1000 delay-200 ${contactAnim.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                            ref={contactRef}
+                            className={`w-full lg:w-2/3 transition-all duration-1000 delay-200 ${contactVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                                 }`}
                         >
                             <form
@@ -183,7 +182,7 @@ export default function ContactUsPage() {
 
             {/* ── 3. LOCATION SPOTLIGHT ──────────────────────────────────────── */}
             <section className="w-full bg-[#0A0A0A] py-28 px-6 border-y border-white/5">
-                <div ref={mapAnim.ref} className="w-full max-w-7xl mx-auto flex flex-col items-center text-center">
+                <div ref={mapRef} className="w-full max-w-7xl mx-auto flex flex-col items-center text-center">
                     <span className="text-[10px] font-black tracking-[0.4em] uppercase text-stone-500 mb-6 block">Visit us</span>
                     <h2 className="text-white text-4xl sm:text-6xl font-black leading-[0.95] tracking-tighter uppercase mb-20 animate-fade-in">
                         WE GATHER AT<br />THE PALMS, ACCRA
