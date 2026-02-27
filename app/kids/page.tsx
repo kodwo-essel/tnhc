@@ -26,38 +26,6 @@ function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.05) {
 // ─────────────────────────────────────────────────────────────
 // Types & Data
 // ─────────────────────────────────────────────────────────────
-interface AgeGroup {
-    title: string;
-    age: string;
-    description: string;
-    image?: string;
-}
-
-const AGE_GROUPS: AgeGroup[] = [
-    {
-        title: "Nursery",
-        age: "Birth - 18 months",
-        image: "/kids-nursery.png",
-        description: "Your child will experience fun learning activities, play with others their age and receive focused love and attention from our leaders. Every baby is prayed over before they leave our classroom.",
-    },
-    {
-        title: "Toddlers",
-        age: "18 months - 2 years",
-        description: "Your child will experience age-appropriate worship, a Bible Storybook or puppet show, games and crafts that teach about how much God loves them.",
-    },
-    {
-        title: "Preschool",
-        age: "3 years - Kindergarten",
-        description: "Children have time to play, make friends, watch fun videos about the Bible, and engage in age-appropriate learning activities in a safe environment.",
-    },
-    {
-        title: "Elementary",
-        age: "Grades 1 - 6",
-        image: "/kids-elementary.png",
-        description: "We teach the Bible in a way that addresses real issues children face. They'll engage in games and activities with peers and have focused time with leaders who make sure every child knows they are loved by God.",
-    },
-];
-
 const POLICIES = [
     {
         title: "Snack Policy",
@@ -125,14 +93,26 @@ export default function KidsPage() {
                         The New House Church
                     </p>
                     <h2 className="text-4xl sm:text-5xl font-bold text-black mb-8 leading-tight">
-                        Connect, Grow, and Thrive
+                        A Genuine Walk With Jesus
                     </h2>
                     <div className="w-16 h-1 bg-black/10 mx-auto mb-8" />
-                    <p className="text-lg text-stone-600 leading-relaxed font-dm-sans">
-                        Families are what make up TNHC — and we know your kids are going to love it here.
-                        Our goal at TNHC Kids is to connect kids to God and to each other through fun and
-                        interactive programming for all ages.
-                    </p>
+                    <div className="space-y-6 text-lg text-stone-600 leading-relaxed font-dm-sans text-left max-w-3xl mx-auto">
+                        <p>
+                            The purpose of The New House Church Children’s Ministry is to minister to the needs of
+                            children between the ages of 3 to 13 years old enabling them to have a genuine walk and
+                            experience with Jesus.
+                        </p>
+                        <p>
+                            Our children are taught that the presence and the power of the Holy
+                            Spirit resides in them at all times. They are taught to engage in The Word, prayer, praise and
+                            worship, and testimonies.
+                        </p>
+                        <p>
+                            The Word is ministered at their level through modern, creative and
+                            strategic, yet uncompromising methods. Our children are taught reverence and obedience to
+                            God, His House and His Word as well as honor for parents and authority.
+                        </p>
+                    </div>
                 </div>
             </section>
 
@@ -141,52 +121,63 @@ export default function KidsPage() {
                 <div className="max-w-6xl mx-auto px-6">
                     <div
                         ref={valuesRef}
-                        className={`grid grid-cols-2 lg:grid-cols-5 gap-8 transition-all duration-1000 ${valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                        className={`transition-all duration-1000 ${valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                     >
-                        {["Discover", "Connect", "Grow", "Serve", "Share"].map((v, i) => (
-                            <div key={v} className="flex flex-col items-center gap-4 text-center">
-                                <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center font-bold text-stone-300 border border-stone-100">
-                                    0{i + 1}
+                        <div className="flex flex-col md:flex-row gap-12 items-center">
+                            <div className="flex-1 space-y-8 text-left">
+                                <div className="space-y-4">
+                                    <h3 className="text-2xl font-bold text-black uppercase tracking-tight">TNHC Kids is focused on…</h3>
+                                    <div className="flex gap-4">
+                                        <div className="w-1.5 h-auto bg-[rgb(0,222,230)] shrink-0" />
+                                        <p className="text-stone-600 font-dm-sans text-lg">
+                                            Touching children’s hearts with the good news of who Jesus is and what He has done for them and
+                                            helping them to get to know their Best Friend for life.
+                                        </p>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <div className="w-1.5 h-auto bg-black shrink-0" />
+                                        <p className="text-stone-600 font-dm-sans text-lg">
+                                            We often say our children are the future of the church. Children are not merely a resource for
+                                            the future but are part of the church in this generation. They are a major part of the body of
+                                            Christ now, TODAY!
+                                        </p>
+                                    </div>
                                 </div>
-                                <h3 className="font-bold text-sm tracking-widest uppercase text-stone-800">{v}</h3>
                             </div>
-                        ))}
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* ── 4. AGE GROUPS ────────────────────────────────────────────── */}
-            <section className="w-full py-24 px-6">
-                <div className="max-w-6xl mx-auto">
-                    <div
-                        ref={ageGroupsRef}
-                        className={`grid grid-cols-1 md:grid-cols-2 gap-12 transition-all duration-1000 ${ageGroupsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-                            }`}
-                    >
-                        {AGE_GROUPS.map((group) => (
-                            <div key={group.title} className="flex flex-col gap-6 group">
-                                {group.image && (
-                                    <div className="w-full aspect-[16/9] relative rounded-2xl overflow-hidden bg-stone-100 shadow-md">
-                                        <Image
-                                            src={group.image}
-                                            alt={group.title}
-                                            fill
-                                            className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                        />
-                                    </div>
-                                )}
-                                <div className="space-y-3">
-                                    <div className="flex items-baseline gap-3">
-                                        <h3 className="text-2xl font-bold text-black uppercase tracking-tight">{group.title}</h3>
-                                        <span className="text-sm font-bold text-stone-400 font-dm-sans">{group.age}</span>
-                                    </div>
-                                    <p className="text-stone-600 leading-relaxed font-dm-sans">
-                                        {group.description}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
+            {/* ── 4. PARENT PARTNERSHIP ────────────────────────────────────────── */}
+            <section className="w-full py-24 px-6 bg-[#0A0A0A] text-white">
+                <div
+                    ref={ageGroupsRef}
+                    className={`max-w-4xl mx-auto transition-all duration-1000 ${ageGroupsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+                >
+                    <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-8 block underline decoration-[rgb(0,222,230)] decoration-4 underline-offset-8 w-max">Parent Partnership</span>
+                    <h2 className="text-4xl sm:text-6xl font-black leading-[0.9] tracking-tighter uppercase mb-12">
+                        CHURCH & HOME<br /><span className="text-stone-500">UNITED</span>
+                    </h2>
+
+                    <div className="space-y-8 text-lg font-dm-sans leading-relaxed text-stone-300">
+                        <p>
+                            While the church provides valuable teaching and guidance, it is essential that parents take an
+                            active role in reinforcing these lessons within the home environment. By integrating the Word of
+                            God into daily life, parents have the unique opportunity to shape their child’s faith journey,
+                            cultivating a deeper understanding and personal relationship with God.
+                        </p>
+                        <p>
+                            Parents should create an atmosphere of prayer, Bible study, and worship, allowing their children to see faith in action.
+                            This partnership between the church and the home ensures that children grow up with a solid
+                            foundation in God&apos;s Word, making their spiritual growth an ongoing and natural part of their
+                            lives.
+                        </p>
+                        <p className="text-white italic font-bold">
+                            To achieve the mission of training our children in the way they should go, the participation of all parents is
+                            required. Thank you for your co-operation and support!
+                        </p>
                     </div>
                 </div>
             </section>
@@ -215,6 +206,14 @@ export default function KidsPage() {
                                     </p>
                                 </div>
                             ))}
+                            <div className="space-y-4">
+                                <h4 className="text-[rgb(0,222,230)] font-bold text-sm tracking-widest uppercase border-l-2 border-[rgb(0,222,230)] pl-4">
+                                    NB
+                                </h4>
+                                <p className="text-white text-sm leading-relaxed font-dm-sans pl-4 italic">
+                                    Nursing mother will take care of infants at the nursing mothers section.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
