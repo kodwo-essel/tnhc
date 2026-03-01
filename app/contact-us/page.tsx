@@ -40,7 +40,7 @@ export default function ContactUsPage() {
                         alt="Contact TNHC"
                         fill
                         priority
-                        className="object-cover opacity-40 animate-slow-zoom"
+                        className="object-cover object-bottom opacity-40 animate-slow-zoom"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black pointer-events-none" />
                 </div>
@@ -115,7 +115,7 @@ export default function ContactUsPage() {
                                     </div>
                                     <div className="flex flex-col">
                                         <span className="text-[10px] font-black tracking-widest text-stone-500 uppercase mb-1">Gathering at</span>
-                                        <span className="text-white font-black tracking-tight">HAATSO ATOMIC, ACCRA</span>
+                                        <span className="text-white font-black tracking-tight">HAATSO SUPERMARKET JUNCTION</span>
                                     </div>
                                 </div>
                             </div>
@@ -185,15 +185,15 @@ export default function ContactUsPage() {
                 <div ref={mapRef} className="w-full max-w-7xl mx-auto flex flex-col items-center text-center">
                     <span className="text-[10px] font-black tracking-[0.4em] uppercase text-stone-500 mb-6 block">Visit us</span>
                     <h2 className="text-white text-4xl sm:text-6xl font-black leading-[0.95] tracking-tighter uppercase mb-20 animate-fade-in">
-                        WE GATHER AT<br />HAATSO ATOMIC, ACCRA
+                        WE GATHER AT<br />HAATSO SUPERMARKET JUNCTION
                     </h2>
 
                     <div className="w-full aspect-[21/9] relative rounded-[3rem] overflow-hidden shadow-2xl border border-white/5 group">
                         <Image
-                            src="/hero.jpeg"
+                            src="/hero.jpg"
                             alt="The Palms"
                             fill
-                            className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                            className="object-cover object-bottom grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-1000" />
 

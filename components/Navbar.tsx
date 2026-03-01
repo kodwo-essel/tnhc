@@ -9,9 +9,9 @@ const menuItems = [
     { label: "ABOUT", href: "/about" },
     { label: "WATCH", href: "/watch", external: false },
     { label: "START HERE", href: "/starthere" },
+    { label: "CARE", href: "/care" },
     { label: "BAPTISM", href: "/baptism" },
     { label: "KIDS", href: "/kids" },
-    { label: "YOUTH", href: "/youth" },
 ];
 
 export default function Navbar() {
@@ -54,10 +54,10 @@ export default function Navbar() {
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
                     <Link
-                        href="/conf"
+                        href="/upcoming"
                         className="text-sm font-termina font-bold text-white hover:underline transition-colors"
                     >
-                        TNHC Conference 2026
+                        HAPPENING SOON
                     </Link>
 
                     {/* MENU Dropdown */}

@@ -76,7 +76,7 @@ export default function NewPage() {
                         src="/hero.jpg"
                         alt="TNHC Church"
                         fill
-                        className="object-cover opacity-70"
+                        className="object-cover object-bottom opacity-70"
                         priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
@@ -302,10 +302,10 @@ export default function NewPage() {
                                 className="text-base text-stone-400 leading-relaxed"
                                 style={{ fontFamily: "var(--font-dm-sans)" }}
                             >
-                                TNHC meets in a historic building in Haatso Atomic, Accra.
+                                TNHC meets in a historic building in Haatso Supermarket Junction.
                                 <br />
                                 <strong className="text-stone-100 font-semibold">
-                                    Haatso Atomic, Accra, Ghana
+                                    Haatso Supermarket Junction
                                 </strong>
                             </p>
                         </div>

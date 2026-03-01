@@ -37,7 +37,7 @@ export default function AboutPastorsPage() {
                         alt="TNHC Church"
                         fill
                         priority
-                        className="object-cover opacity-40 animate-slow-zoom"
+                        className="object-cover object-bottom opacity-40 animate-slow-zoom"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black pointer-events-none" />
                 </div>

@@ -23,11 +23,11 @@ export default function Hero() {
           alt="The New House Church"
           fill
           priority
-          className={`object-cover transition-transform duration-[20000ms] ease-out scale-100 ${mounted ? "scale-110" : "scale-100"
+          className={`object-cover object-bottom transition-transform duration-[20000ms] ease-out scale-100 ${mounted ? "scale-110" : "scale-100"
             }`}
         />
         {/* Visual Overlay: Gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/90" />
       </div>
 
       {/* 2. Hero Content */}
@@ -37,8 +37,8 @@ export default function Hero() {
             }`}
         >
           {/* Main Headline */}
-          <h1 className="text-6xl sm:text-8xl lg:text-9xl font-black text-white leading-none tracking-tighter mb-4">
-            THIS IS <span className="block sm:inline">HOME</span>
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-white leading-none tracking-tighter mb-4">
+            THE NEW HOUSE <span className="block sm:inline">CHURCH</span>
           </h1>
 
           {/* Subheadline */}
@@ -46,7 +46,7 @@ export default function Hero() {
             style={{ fontFamily: "var(--font-dm-sans)" }}
             className="text-stone-300 text-lg sm:text-2xl font-medium tracking-wide max-w-2xl mx-auto mb-10"
           >
-            Modern. Energetic. Jesus-centered.
+            Truth. Fellowship. Revival.
           </p>
 
           {/* Call to Action Buttons */}

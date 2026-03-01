@@ -27,9 +27,9 @@ const footerColumns = [
         title: "Connect",
         links: [
             { label: "Start Here", href: "/starthere", external: false },
+            { label: "Care", href: "/care", external: false },
             { label: "Baptism", href: "/baptism", external: false },
             { label: "Kids", href: "/kids", external: false },
-            { label: "Youth", href: "/youth", external: false },
         ],
     },
 ];
@@ -76,7 +76,7 @@ export default function Footer() {
                             />
                         </Link>
                         <h2 className="text-4xl sm:text-6xl font-black leading-[0.9] tracking-tighter uppercase mb-8">
-                            UNTIL ALL<br />MEN ARE<br />SAVED.
+                            RAISING THE<br />PEOPLE TO BECOME<br />LIKE CHRIST.
                         </h2>
                         <div className="flex gap-4">
                             {socialLinks.map((social) => (
@@ -162,7 +162,7 @@ export default function Footer() {
                         <div className="flex flex-col gap-6">
                             <div className="space-y-1">
                                 <p className="text-white text-sm font-black tracking-tighter uppercase">Sundays @ 10AM</p>
-                                <p className="text-stone-400 text-xs" style={{ fontFamily: "var(--font-dm-sans)" }}>Haatso Atomic, Accra</p>
+                                <p className="text-stone-400 text-xs" style={{ fontFamily: "var(--font-dm-sans)" }}>Haatso Supermarket Junction</p>
                             </div>
                             <Link
                                 href="/new"

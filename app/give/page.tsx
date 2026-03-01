@@ -113,11 +113,11 @@ export default function GivePage() {
                         alt="Give to The New House Church"
                         fill
                         priority
-                        className={`object-cover transition-transform duration-[20000ms] ease-out ${mounted ? "scale-110" : "scale-100"
+                        className={`object-cover object-bottom transition-transform duration-[20000ms] ease-out ${mounted ? "scale-110" : "scale-100"
                             }`}
                     />
                     {/* Overlay: Slightly heavier gradient for the give page */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/70 to-black/100" />
                 </div>
 
                 {/* Hero Content */}

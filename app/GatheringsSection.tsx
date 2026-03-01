@@ -61,7 +61,7 @@ export default function GatheringsSection() {
           </p>
           <div className="text-base text-stone-400 leading-relaxed font-medium" style={{ fontFamily: "var(--font-dm-sans)" }}>
             <p>Our Sunday service is <strong className="text-stone-100 font-bold">10:00am</strong></p>
-            <p>Friday Travail : <strong className="text-stone-100 font-bold">6:00pm</strong></p>
+            <p>Friday Travail : <strong className="text-stone-100 font-bold">6:30pm</strong></p>
           </div>
         </div>
 
@@ -73,7 +73,7 @@ export default function GatheringsSection() {
             Location
           </p>
           <p className="text-base text-stone-400 leading-relaxed font-medium" style={{ fontFamily: "var(--font-dm-sans)" }}>
-            The New house Church Haatso Atomic
+            The New house Church Haatso Supermarket Junction
           </p>
         </div>
 

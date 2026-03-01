@@ -41,7 +41,7 @@ export default function AboutPage() {
                         alt="TNHC Church"
                         fill
                         priority
-                        className="object-cover opacity-40 animate-slow-zoom"
+                        className="object-cover object-bottom opacity-40 animate-slow-zoom"
                     />
                     {/* Gradient Overlay for moody feel */}
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black pointer-events-none" />
@@ -111,8 +111,7 @@ export default function AboutPage() {
                             style={{ fontFamily: "var(--font-dm-sans)" }}
                         >
                             We gather in Accra, Ghana, with a passion for our city that never ends.
-                            We believe God loves Ghana, and we will keep doing all that we can to share
-                            His love — until all men are saved.
+                            We believe God loves Ghana, and we will keep doing all that we can — raising the people to become like Christ.
                         </p>
                     </div>
                 </div>
@@ -129,8 +128,8 @@ export default function AboutPage() {
                             }`}
                     >
                         <span className="text-xs font-black tracking-[0.4em] uppercase text-stone-500 mb-6 block">Our Vision</span>
-                        <h2 className="text-white text-5xl sm:text-7xl lg:text-9xl font-black leading-[0.9] tracking-tighter uppercase mb-4">
-                            ACCRA<br />IS SAVED
+                        <h2 className="text-white text-5xl sm:text-7xl lg:text-[10rem] font-black leading-[0.9] tracking-tighter uppercase mb-4">
+                            RAISING<br />THE PEOPLE
                         </h2>
                         <div className="w-24 h-1 bg-[var(--font-accent-color)] mx-auto mt-8" />
                     </div>
@@ -276,7 +275,7 @@ export default function AboutPage() {
                             "We are your burning ones. We are the righteousness of God.",
                             "You're not done with Accra — So neither are we.",
                             "Our vision is clear and God is with us.",
-                            "Until all men are saved.",
+                            "Raising the people to become like christ.",
                         ].map((line, i) => (
                             <p
                                 key={i}

@@ -41,7 +41,7 @@ export default function BaptismPage() {
                     src="/hero.jpg"
                     alt="Baptism at The New House Church"
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-bottom"
                     priority
                 />
                 {/* Very light overlay — mirrors the 0.14 opacity from Squarespace */}
@@ -81,8 +81,8 @@ export default function BaptismPage() {
                         >
                             <div className="w-full aspect-[3/4] relative rounded-2xl overflow-hidden shadow-md bg-stone-100">
                                 <Image
-                                    src="/pastorandwife.jpg"
-                                    alt="Pastor and wife"
+                                    src="/baptism3.jpg"
+                                    alt="Baptism at The New House Church"
                                     fill
                                     className="object-cover"
                                 />
@@ -148,7 +148,7 @@ export default function BaptismPage() {
                             {/* Tall portrait */}
                             <div className="w-full aspect-[3/4] relative rounded-2xl overflow-hidden shadow-md bg-stone-100">
                                 <Image
-                                    src="/prayer.jpg"
+                                    src="/baptism1.jpg"
                                     alt="Baptism community"
                                     fill
                                     className="object-cover"
@@ -157,7 +157,7 @@ export default function BaptismPage() {
                             {/* Landscape */}
                             <div className="w-full aspect-[3/2] relative rounded-2xl overflow-hidden shadow-md bg-stone-100">
                                 <Image
-                                    src="/speaker.jpg"
+                                    src="/baptism2.jpg"
                                     alt="Baptism Sunday"
                                     fill
                                     className="object-cover"

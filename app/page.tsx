@@ -1,7 +1,7 @@
 import Hero from "./Hero";
 import ThisWeekSection from "./ThisWeekSection";
 import WelcomeSection from "./WelcomeSection";
-import PodcastSection from "./PodcastSection";
+// import PodcastSection from "./PodcastSection";
 import GatheringsSection from "./GatheringsSection";
 import ContactSection from "./ContactSection";
 
@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       <WelcomeSection />
       <ThisWeekSection />
-	    <PodcastSection/>
+	    {/* <PodcastSection/> */}
       <GatheringsSection />
       <ContactSection />
 

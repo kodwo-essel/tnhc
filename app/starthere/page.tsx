@@ -66,7 +66,7 @@ export default function StartHerePage() {
                         alt="Start Here at TNHC"
                         fill
                         priority
-                        className="object-cover opacity-40 animate-slow-zoom"
+                        className="object-cover object-bottom opacity-40 animate-slow-zoom"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black pointer-events-none" />
                 </div>
@@ -222,10 +222,10 @@ export default function StartHerePage() {
             {/* ── 5. FINAL VISUAL ────────────────────────────────────────────── */}
             <section className="w-full h-[60vh] relative overflow-hidden">
                 <Image
-                    src="/hero.jpeg"
+                    src="/hero.jpg"
                     alt="TNHC Community"
                     fill
-                    className="object-cover grayscale brightness-50"
+                    className="object-cover object-bottom grayscale brightness-50"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
             </section>

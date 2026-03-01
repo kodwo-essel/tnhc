@@ -57,7 +57,7 @@ export default function ConferencePage() {
                         alt="T Conference 2026"
                         fill
                         priority
-                        className="object-cover opacity-50 animate-slow-zoom"
+                        className="object-cover object-bottom opacity-50 animate-slow-zoom"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black" />
                 </div>
