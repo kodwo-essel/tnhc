@@ -306,10 +306,10 @@ export default function AboutPage() {
 
                     <div className="flex flex-col sm:flex-row flex-wrap gap-6 justify-center">
                         <Link
-                            href="/starthere"
+                            href="/new"
                             className="text-stone-400 font-black text-xs tracking-[0.2em] uppercase px-10 py-5 rounded-full hover:text-white transition-all flex items-center justify-center gap-2"
                         >
-                            START HERE
+                            I&apos;M NEW
                         </Link>
                         <Link
                             href="/new"

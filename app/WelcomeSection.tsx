@@ -23,7 +23,7 @@ const WelcomeSection: React.FC = () => {
                         </p>
 
                         <Link
-                            href="/starthere"
+                            href="/new"
                             className="bg-black text-white text-md font-bold px-8 py-4 rounded-full hover:scale-105 transition-transform duration-300 w-max"
                         >
                             START YOUR JOURNEY
@@ -73,12 +73,12 @@ const WelcomeSection: React.FC = () => {
                     </button>
 
                     <div className="w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                        <iframe
-                            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
-                            title="Welcome to The New House Church"
+                        <video
+                            src="/welcome.mp4"
                             className="w-full h-full"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
+                            controls
+                            autoPlay
+                            playsInline
                         />
                     </div>
                 </div>

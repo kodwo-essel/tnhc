@@ -178,10 +178,10 @@ export default function YouthPage() {
                             Get In Touch
                         </Link>
                         <Link
-                            href="/starthere"
+                            href="/new"
                             className="border-2 border-white text-white font-bold text-sm px-12 py-5 rounded-lg hover:bg-white hover:text-black transition tracking-widest uppercase"
                         >
-                            Start Here
+                            I&apos;m New
                         </Link>
                     </div>
                 </div>

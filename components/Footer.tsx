@@ -26,7 +26,6 @@ const footerColumns = [
     {
         title: "Connect",
         links: [
-            { label: "Start Here", href: "/starthere", external: false },
             { label: "Care", href: "/care", external: false },
             { label: "Baptism", href: "/baptism", external: false },
             { label: "Kids", href: "/kids", external: false },
@@ -162,6 +161,9 @@ export default function Footer() {
                         <div className="flex flex-col gap-6">
                             <div className="space-y-1">
                                 <p className="text-white text-sm font-black tracking-tighter uppercase">Sundays @ 10AM</p>
+
+                                <p className="text-white text-sm font-black tracking-tighter uppercase">Fridays @ 6PM</p>
+                                <br />
                                 <p className="text-stone-400 text-xs" style={{ fontFamily: "var(--font-dm-sans)" }}>Haatso Supermarket Junction</p>
                             </div>
                             <Link

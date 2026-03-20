@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import PlanVisitFlow from "../PlanVisitFlow";
 
 // ─── Scroll-animation hook ──────────────────────────────────────────────────
 function useFadeUp<T extends HTMLElement = HTMLDivElement>(threshold = 0.15) {
@@ -97,7 +98,7 @@ export default function NewPage() {
                         className="text-stone-300 text-lg sm:text-xl max-w-xl"
                         style={{ fontFamily: "var(--font-dm-sans)" }}
                     >
-                        We&apos;re so glad you&apos;re here. Seriously.
+                        We&apos;re so glad you&apos;re here.
                     </p>
                 </div>
             </section>
@@ -119,9 +120,7 @@ export default function NewPage() {
                         We believe the simple fact that you&apos;re here is not a coincidence.
                         TNHC is a{" "}
                         <strong>diverse, multi-generational, and energetic church</strong>{" "}
-                        gathering in Accra. We&apos;re not about putting on a show — we&apos;re
-                        about connecting people to{" "}
-                        <strong>Jesus and to each other.</strong>
+                        We exist to <strong>raise people to become like Jesus</strong>, and to grow together in Him.{" "}
                     </p>
                     <p
                         className={`mt-6 text-stone-500 text-lg transition-all duration-700 delay-200 ${welcomeVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -192,71 +191,9 @@ export default function NewPage() {
                 </div>
             </section>
 
-            {/* ── 4. HIGHLIGHTS ────────────────────────────────────────────────── */}
-            <section className="w-full bg-stone-100 py-20 sm:py-28">
-                <div ref={highlightsRef} className="w-full max-w-7xl mx-auto px-6">
-                    {/* Header */}
-                    <div
-                        className={`mb-16 transition-all duration-700 ${highlightsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                            }`}
-                    >
-                        <span className="inline-block border border-stone-400 rounded-lg px-3 py-1 text-xs font-medium tracking-widest uppercase text-stone-500 mb-6">
-                            In case you didn&apos;t watch
-                        </span>
-                        <h2 className="text-black text-4xl sm:text-5xl font-bold leading-tight">
-                            HERE&apos;S THE
-                            <br />
-                            HIGHLIGHTS.
-                        </h2>
-                    </div>
+            {/* ── 4. THE FLOW ──────────────────────────────────────────────────── */}
+            <PlanVisitFlow />
 
-                    {/* Cards grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-                        <HighlightCard
-                            number="01"
-                            title="A Community You'll Actually Love"
-                            body="TNHC is an amazing, diverse, and energetic community of people following Jesus together. Come as you are — you'll fit right in."
-                            delay="delay-75"
-                            visible={highlightsVisible}
-                        />
-                        <HighlightCard
-                            number="02"
-                            title="Real Teaching, Real Life"
-                            body="Every Sunday we dig into Scripture in a way that's relevant, practical, and honest. No fluff. Just truth that actually helps."
-                            delay="delay-150"
-                            visible={highlightsVisible}
-                        />
-                        <HighlightCard
-                            number="03"
-                            title="Kids Who Can't Wait to Come Back"
-                            body="Our kids program is full of adventure and exploration of God's love. Our team genuinely loves children — and it shows."
-                            delay="delay-200"
-                            visible={highlightsVisible}
-                        />
-                        <HighlightCard
-                            number="04"
-                            title="Youth That Goes Deep"
-                            body="Our youth ministry is a safe, exciting space for teenagers to wrestle with faith, belong, and grow into who God made them to be."
-                            delay="delay-300"
-                            visible={highlightsVisible}
-                        />
-                        <HighlightCard
-                            number="05"
-                            title="Worship That Moves You"
-                            body="Our worship experience is live, full-band, and designed to help you encounter God — not just as a spectator but as a participant."
-                            delay="delay-400"
-                            visible={highlightsVisible}
-                        />
-                        <HighlightCard
-                            number="06"
-                            title="A Church on Mission"
-                            body="We believe God loves Accra and we're serious about reaching our city. When you join TNHC, you join a movement — not just a meeting."
-                            delay="delay-500"
-                            visible={highlightsVisible}
-                        />
-                    </div>
-                </div>
-            </section>
 
             {/* ── 5. SERVICE TIMES ─────────────────────────────────────────────── */}
             <section className="w-full bg-black py-20 sm:py-28">
@@ -348,12 +285,12 @@ export default function NewPage() {
                         journey with TNHC.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link
-                            href="/starthere"
+                        {/* <Link
+                            href="/new"
                             className="bg-black text-white font-bold text-sm px-8 py-4 rounded-lg hover:opacity-80 transition"
                         >
                             START HERE
-                        </Link>
+                        </Link> */}
                         <Link
                             href="/contact-us"
                             className="border-2 border-black text-black font-bold text-sm px-8 py-4 rounded-lg hover:bg-black hover:text-white transition"
@@ -378,12 +315,12 @@ export default function NewPage() {
                     </button>
 
                     <div className="w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                        <iframe
-                            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
-                            title="Welcome to TNHC"
+                        <video
+                            src="/welcome.mp4"
                             className="w-full h-full"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
+                            controls
+                            autoPlay
+                            playsInline
                         />
                     </div>
                 </div>

@@ -227,7 +227,7 @@ export default function ContactUsPage() {
                             I&apos;M NEW
                         </Link>
                         <Link
-                            href="/starthere"
+                            href="/new"
                             className="bg-[var(--font-accent-color)] text-black font-black text-xs tracking-[0.2em] uppercase px-12 py-5 rounded-full hover:scale-105 transition-all shadow-xl shadow-[var(--font-accent-color)]/20"
                         >
                             START YOUR JOURNEY

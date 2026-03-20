@@ -80,10 +80,10 @@ const ThisWeekBanner: React.FC = () => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/this-week.png')" }}
+        style={{ backgroundImage: "url('/this-week-at-tnhc.jpg')" }}
       />
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/70" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center text-white px-4 md:px-0 gap-4">
@@ -117,7 +117,9 @@ const ThisWeekBanner: React.FC = () => {
 
         {/* RSVP Button */}
         <Link
-          href="/rsvp"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeXTEa-5j85rhyc0dvgpu_PZ9p2-yM_P6EDLyo50a2QYbfssg/viewform?usp=header"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{ backgroundColor: "var(--font-accent-color)" }}
           className="mt-6 px-6 py-3 rounded-lg font-semibold text-black transition-colors"
         >

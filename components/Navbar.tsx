@@ -8,7 +8,6 @@ const menuItems = [
     { label: "I'M NEW", href: "/new" },
     { label: "ABOUT", href: "/about" },
     { label: "WATCH", href: "/watch", external: false },
-    { label: "START HERE", href: "/starthere" },
     { label: "CARE", href: "/care" },
     { label: "BAPTISM", href: "/baptism" },
     { label: "KIDS", href: "/kids" },
@@ -53,13 +52,6 @@ export default function Navbar() {
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
-                    <Link
-                        href="/upcoming"
-                        className="text-sm font-termina font-bold text-white hover:underline transition-colors"
-                    >
-                        HAPPENING SOON
-                    </Link>
-
                     {/* MENU Dropdown */}
                     <div
                         className="relative"
@@ -152,14 +144,6 @@ export default function Navbar() {
                     {/* Root Folder View */}
                     <div className={`w-full transition-all duration-300 ${mobileFolder === "root" ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-full absolute pointer-events-none"}`}>
                         <div className="flex flex-col gap-8 text-center">
-                            <Link
-                                href="/conf"
-                                onClick={closeMobileMenu}
-                                className="text-2xl font-bold text-white uppercase tracking-wider"
-                            >
-                                TNHC Conference 2026
-                            </Link>
-
                             <button
                                 onClick={() => setMobileFolder("menu")}
                                 className="text-2xl font-bold text-white uppercase tracking-wider flex items-center justify-center gap-2"

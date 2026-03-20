@@ -1,6 +1,36 @@
 @import "tailwindcss";
 
 
+@keyframes slow-zoom {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite alternate;
+}
+
+.animate-scroll-left {
+  animation: scroll-left 40s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
 :root {
   --font-body-letter-spacing: 1px;
   --font-accent-color: rgb(0, 222, 230);
@@ -30,4 +60,3 @@
     padding-right: 1.5rem;
   }
 }
-

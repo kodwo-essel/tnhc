@@ -52,7 +52,7 @@ export default function Hero() {
           {/* Call to Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/starthere"
+              href="/new"
               // style={{ backgroundColor: "var(--font-accent-color)" }}
               className="w-full sm:w-auto text-black bg-white font-extrabold text-sm tracking-[0.2em] uppercase px-10 py-5 rounded-full hover:scale-105 transition-transform duration-300 shadow-xl"
             >
@@ -60,7 +60,7 @@ export default function Hero() {
             </Link>
             <Link
               href="/watch"
-              className="w-full sm:w-auto bg-red-600 backdrop-blur-md text-white font-extrabold text-sm tracking-[0.2em] uppercase px-10 py-5 rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 shadow-xl"
+              className="w-full sm:w-auto bg-red-600 backdrop-blur-md text-white font-extrabold text-sm tracking-[0.2em] uppercase px-10 py-5 rounded-full border border-white/20 transition-all duration-300 shadow-xl"
             >
               Watch Online
             </Link>

@@ -213,10 +213,10 @@ export default function BaptismPage() {
                             SIGN UP FOR BAPTISM
                         </a>
                         <Link
-                            href="/starthere"
+                            href="/new"
                             className="border-2 border-white text-white font-bold text-sm px-8 py-4 rounded-lg hover:bg-white hover:text-black transition"
                         >
-                            START HERE
+                            I&apos;M NEW
                         </Link>
                     </div>
                 </div>
